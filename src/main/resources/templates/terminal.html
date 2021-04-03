@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Terminal</title>
+</head>
+<body>
+<h1>Enter values</h1>
+    <form method="POST" th:action="@{/terminal}" id="clientList" th:object="${clientList}">
+        <table style="width:10%" cellspacing="0">
+            <tr th:each="player : ${playersList}">
+                <span th:text="${player.name}">PLAYER</span><br/>
+                <input name="players" type="text" th:field="*{name}" placeholder="points"/>
+                <input type="text" th:field="*{books[__${itemStat.index}__].title}" placeholder="points"/>
+            </tr>
+        </table>
+</form>

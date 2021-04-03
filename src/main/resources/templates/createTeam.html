@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Car Cloud</title>
+    <link rel="stylesheet" th:href="@{/styles.css}" />
+</head>
+<body>
+<h1>Design your car!</h1>
+
+<form method="POST" th:action="@{/logout}">
+    <input type="submit" value="Logout"/>
+</form>
+
+<div>
+    <h1 th:text="${availableFunds}">FUNDS</h1>
+</div>
+
+<form method="POST" th:object="${team}">
+    <div class="grid">
+        <div class="part-group" id="captain">
+            <h3>Choose your captain:</h3>
+            <div th:each="player : ${captain}">
+                <input name="players" type="checkbox" th:value="${player.id}"/>
+                <span th:text="${player.name}">PLAYER</span><br/>
+            </div>
+        </div>
+        <div class="part-group" id="regular">
+            <h3>Choose your regular player</h3>
+            <div th:each="player : ${regular}">
+                <input name="players" type="checkbox" th:value="${player.id}"/>
+                <span th:text="${player.name}">PLAYER</span><br/>
+            </div>
+        </div>
+        <div class="part-group" id="underdog">
+            <h3>Choose your underdog</h3>
+            <div th:each="player : ${underdog}">
+                <input name="players" type="checkbox" th:value="${player.id}"/>
+                <span th:text="${player.name}">PLAYER</span><br/>
+            </div>
+        </div>
+        <div>
+            <h3>Name your car customization:</h3>
+            <input type="text" th:field="*{name}"/>
+            <br/>
+            <button>Submit your car</button>
+        </div>
+    </div>
+</form>
+</body>
+</html>
