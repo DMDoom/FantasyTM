@@ -4,6 +4,8 @@ import com.beta.fantasytm.Player;
 import com.beta.fantasytm.Position;
 import com.beta.fantasytm.data.PlayerRepository;
 import com.beta.fantasytm.data.TeamRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +22,8 @@ import java.util.Optional;
 @RequestMapping("/terminal")
 public class TerminalController {
 
+    private static final Logger log = LoggerFactory.getLogger(CreateTeamController.class);
+
     TeamRepository teamRepo;
     PlayerRepository playerRepo;
 
@@ -35,7 +39,7 @@ public class TerminalController {
 
         for (int i = 1; i <= 16; i++) {
             Optional<Player> placeholder = playerRepo.findById((long) i);
-            //updateForm.addPlayer(placeholder);
+            updateForm.addPlayer(placeholder);
         }
 
         model.addAttribute("form", updateForm);
@@ -45,9 +49,11 @@ public class TerminalController {
 
     @PostMapping
     public String processUpdates(UpdateTeamsForm form) {
-        return null;
+        log.info(form.toString());
+        return "redirect:/login";
     }
 
+    /*
     @ModelAttribute
     public void playerListModel(Model model) {
         // Adding 16 players to a list of players to display on the page
@@ -59,4 +65,5 @@ public class TerminalController {
 
         model.addAttribute("playersList", players);
     }
+    */
 }

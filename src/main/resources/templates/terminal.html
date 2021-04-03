@@ -8,10 +8,9 @@
 <h1>Enter values</h1>
     <form method="POST" th:action="@{/terminal}" id="clientList" th:object="${clientList}">
         <table style="width:10%" cellspacing="0">
-            <tr th:each="player : ${playersList}">
+            <tr th:each="player, itemStat : ${form}">
                 <span th:text="${player.name}">PLAYER</span><br/>
-                <input name="players" type="text" th:field="*{name}" placeholder="points"/>
-                <input type="text" th:field="*{books[__${itemStat.index}__].title}" placeholder="points"/>
+                <input type="text" th:field="*{form[__${itemStat.index}__].points}" placeholder="points"/>
             </tr>
         </table>
 </form>
