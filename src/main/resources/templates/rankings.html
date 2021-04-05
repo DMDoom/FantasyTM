@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Terminal</title>
+</head>
+<body>
+<h1>Enter values</h1>
+<form th:object="${form}">
+<table style="width:10%" cellspacing="25">
+    <thead>
+        <tr>
+            <th>Team name</th>
+            <th>Points</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="team, itemStat : ${form.teams}">
+            <td><h4 th:field="*{teams[__${itemStat.index}__].name}" th:text="${team.getName()}">Name</h4></td>
+            <td><h4 th:field="*{teams[__${itemStat.index}__].user}" th:text="${team.getUser().getUsername()}">Owner</h4></td>
+            <td><h4 th:field="*{teams[__${itemStat.index}__].points}" th:text="${team.getPoints()}">Points</h4></td>
+        </tr>
+    </tbody>
+</table>
+</form>

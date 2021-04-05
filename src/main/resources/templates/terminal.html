@@ -30,7 +30,7 @@
                     <td><input th:field="*{players[__${itemStat.index}__].position}" th:value="${player.getPosition()}" /></td>
                 </tr>
             </tbody>
-            <input type="submit" name="Update all" value="updateBasedOnAll"/>
-            <input type="submit" name="Update all based on first 16" value="updateBasedOnCaptains"/>
+            <input type="submit" name="action" value="updateBasedOnAll"/>
+            <input type="submit" name="action" value="updateBasedOnCaptains"/>
         </table>
 </form>

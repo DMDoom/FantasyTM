@@ -15,9 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 @Controller
 @RequestMapping("/terminal")
@@ -46,29 +44,27 @@ public class TerminalController {
         return "terminal";
     }
 
-    // Untested
-    @PostMapping(params = "updateBasedOnAll")
+    @PostMapping(params = "action=updateBasedOnAll")
     public String processUpdates(@ModelAttribute("form") UpdateTeamsForm form) {
         // Update players
         for (Player player : form.getPlayers()) {
             playerRepo.save(player);
         }
 
-        // Then update all teams based on new player scores logic here
-        // something like this, complete later
-        /*
+        // Update all teams based on updated players score
         for (Team team : teamRepo.findAll()) {
             team.updatePoints();
             teamRepo.save(team);
         }
 
-         */
 
         return "redirect:/login";
     }
 
-    // Untested
-    @PostMapping(params = "updateBasedOnCaptains")
+    // UNTESTED
+    // TODO:
+    // TEST
+    @PostMapping(params = "action=updateBasedOnCaptains")
     public String processFirstSix(@ModelAttribute("form") UpdateTeamsForm form) {
 
         // Updating captains
@@ -87,7 +83,7 @@ public class TerminalController {
             counterForCaptains++;
         }
 
-        counterForCaptains = 1;
+        counterForCaptains = 9; // adjusted for underdogs being lower in rankings
 
         // Updating underdogs based on captains
         for (int i = 35; i <= 42; i++) {
@@ -99,8 +95,11 @@ public class TerminalController {
             counterForCaptains++;
         }
 
-        // Update all teams logic here, look above
-        // can move it into a method
+        // Update all teams based on updated players score
+        for (Team team : teamRepo.findAll()) {
+            team.updatePoints();
+            teamRepo.save(team);
+        }
 
         return "redirect:/login";
     }
