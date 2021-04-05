@@ -2,6 +2,7 @@ package com.beta.fantasytm.web;
 
 import com.beta.fantasytm.Player;
 import com.beta.fantasytm.Position;
+import com.beta.fantasytm.Team;
 import com.beta.fantasytm.data.PlayerRepository;
 import com.beta.fantasytm.data.TeamRepository;
 import org.slf4j.Logger;
@@ -15,8 +16,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 @RequestMapping("/terminal")
@@ -37,33 +38,70 @@ public class TerminalController {
     public String showTerminal(Model model) {
         UpdateTeamsForm updateForm = new UpdateTeamsForm();
 
-        for (int i = 1; i <= 16; i++) {
-            Optional<Player> placeholder = playerRepo.findById((long) i);
-            updateForm.addPlayer(placeholder);
-        }
+        // Add all existing players to the model
+        updateForm.getPlayers().addAll((Collection<? extends Player>) playerRepo.findAll());
 
         model.addAttribute("form", updateForm);
 
         return "terminal";
     }
 
-    @PostMapping
-    public String processUpdates(UpdateTeamsForm form) {
-        log.info(form.toString());
+    // Untested
+    @PostMapping(params = "updateBasedOnAll")
+    public String processUpdates(@ModelAttribute("form") UpdateTeamsForm form) {
+        // Update players
+        for (Player player : form.getPlayers()) {
+            playerRepo.save(player);
+        }
+
+        // Then update all teams based on new player scores logic here
+        // something like this, complete later
+        /*
+        for (Team team : teamRepo.findAll()) {
+            team.updatePoints();
+            teamRepo.save(team);
+        }
+
+         */
+
         return "redirect:/login";
     }
 
-    /*
-    @ModelAttribute
-    public void playerListModel(Model model) {
-        // Adding 16 players to a list of players to display on the page
-        List<Optional<Player>> players = new ArrayList<>();
+    // Untested
+    @PostMapping(params = "updateBasedOnCaptains")
+    public String processFirstSix(@ModelAttribute("form") UpdateTeamsForm form) {
+
+        // Updating captains
         for (int i = 1; i <= 16; i++) {
-            Optional<Player> placeholder = playerRepo.findById((long) i);
-            players.add(placeholder);
+            playerRepo.save(form.getPlayers().get(i));
         }
 
-        model.addAttribute("playersList", players);
+        // Updating regulars based on captains
+        int counterForCaptains = 1;
+        for (int i = 17; i <= 33; i++) {
+            Player placeholder = form.getPlayers().get(counterForCaptains);
+            placeholder.setPosition(Position.REGULAR);
+            placeholder.setId((long) i);
+            playerRepo.save(placeholder);
+
+            counterForCaptains++;
+        }
+
+        counterForCaptains = 1;
+
+        // Updating underdogs based on captains
+        for (int i = 35; i <= 42; i++) {
+            Player placeholder = form.getPlayers().get(counterForCaptains);
+            placeholder.setPosition(Position.UNDERDOG);
+            placeholder.setId((long) i);
+            playerRepo.save(placeholder);
+
+            counterForCaptains++;
+        }
+
+        // Update all teams logic here, look above
+        // can move it into a method
+
+        return "redirect:/login";
     }
-    */
 }

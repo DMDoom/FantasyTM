@@ -6,11 +6,31 @@
 </head>
 <body>
 <h1>Enter values</h1>
-    <form method="POST" th:action="@{/terminal}" id="clientList" th:object="${clientList}">
+    <form method="POST" th:action="@{/terminal}" th:object="${form}">
         <table style="width:10%" cellspacing="0">
-            <tr th:each="player, itemStat : ${form}">
-                <span th:text="${player.name}">PLAYER</span><br/>
-                <input type="text" th:field="*{form[__${itemStat.index}__].points}" placeholder="points"/>
-            </tr>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Points</th>
+                    <th>Id</th>
+                    <th>Org</th>
+                    <th>Cost</th>
+                    <th>Age</th>
+                    <th>Position</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="player, itemStat : ${form.players}">
+                    <td><input th:field="*{players[__${itemStat.index}__].name}"/></td>
+                    <td><input th:field="*{players[__${itemStat.index}__].points}"/></td>
+                    <td><input th:field="*{players[__${itemStat.index}__].id}"/></td>
+                    <td><input th:field="*{players[__${itemStat.index}__].org}"/></td>
+                    <td><input th:field="*{players[__${itemStat.index}__].cost}"/></td>
+                    <td><input th:field="*{players[__${itemStat.index}__].age}"/></td>
+                    <td><input th:field="*{players[__${itemStat.index}__].position}" th:value="${player.getPosition()}" /></td>
+                </tr>
+            </tbody>
+            <input type="submit" name="Update all" value="updateBasedOnAll"/>
+            <input type="submit" name="Update all based on first 16" value="updateBasedOnCaptains"/>
         </table>
 </form>

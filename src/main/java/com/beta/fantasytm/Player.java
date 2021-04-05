@@ -1,28 +1,40 @@
 package com.beta.fantasytm;
 
 import lombok.*;
+import org.springframework.data.domain.Persistable;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.List;
+
+// AcessLevel.PRIVATE -> PRIVATE
 
 @Data
 @Entity
-@NoArgsConstructor(access = AccessLevel.PRIVATE, force = true)
-@RequiredArgsConstructor
-public class Player {
+@NoArgsConstructor(access = AccessLevel.PUBLIC, force = true)
+@AllArgsConstructor
+//@RequiredArgsConstructor
+public class Player implements Persistable<Long> {
 
     @Id
-    private final Long id;
+    @GeneratedValue(strategy = GenerationType.AUTO) // was IDENTITY
+    @Column(name = "id")
+    //@Basic(optional = false)
+    //@Column(name = "id", unique = true, nullable = false)
+    private Long id;
 
-    private final String name;
-    private final String org;
-    private final int cost;
-    private final int age;
+    private String name;
+    private String org;
+    private int cost;
+    private int age;
 
     @NonNull
-    private double points; // figure out a way to assign this
+    private double points;
 
-    private final Position position;
+    private Position position;
+
+    @Override
+    public boolean isNew() {
+        return false;
+    }
 }
 

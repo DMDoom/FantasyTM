@@ -28,8 +28,9 @@ public class Team {
 
     private Long cost;
 
-    // Update value of the team
-    // Will be used to subtract from user's wallet';
+    private double points;
+
+    // Determine and update cost of the team
     public void calculateCost() {
         long sum = 0;
         for (Player player : players) {
@@ -37,6 +38,16 @@ public class Team {
         }
 
         this.cost = sum;
+    }
+
+    // Determine and update points of the team
+    public void updatePoints() {
+        double sum = 0;
+        for (Player player : players) {
+            sum += player.getPoints();
+        }
+
+        this.points = sum;
     }
 
 }

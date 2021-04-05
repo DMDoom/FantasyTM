@@ -22,13 +22,9 @@ public class FantasytmApplication {
 				/*
 				ISSUES
 
-
 				TODO:
-				- admin hub, a way to assign points to all teams
-				- for real, figure out the macro structure
+				- finish admin hub, it needs to update all teams value based on its player list
 				 */
-
-
 
 
 				// ABSOLUTELY FUCKING DISGUSTING
@@ -69,7 +65,6 @@ public class FantasytmApplication {
 				repo.save(new Player(32L, "evoN", "TEAM SECRET", 1000, 20, 250, Position.REGULAR));
 				repo.save(new Player(33L, "link", "GRIZI ESPORT", 1000, 20, 250, Position.REGULAR));
 
-				repo.save(new Player(34L, "Papou", "GAMERS ORIGIN", 1000, 20, 300, Position.UNDERDOG));
 				repo.save(new Player(35L, "Spam", "ALLIANCE", 1000, 20, 300, Position.UNDERDOG));
 				repo.save(new Player(36L, "Massa", "BIG", 1000, 20, 300, Position.UNDERDOG));
 				repo.save(new Player(37L, "Kappa", "MCLAREN SHADOW", 1000,20, 300, Position.UNDERDOG));
