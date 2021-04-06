@@ -30,6 +30,15 @@ public class Team {
 
     private double points;
 
+    public String toString() {
+        String s = "";
+        for (Player player : this.players) {
+            s += player.getName() + ", ";
+        }
+
+        return s;
+    }
+
     // Determine and update cost of the team
     public void calculateCost() {
         long sum = 0;
@@ -40,14 +49,30 @@ public class Team {
         this.cost = sum;
     }
 
-    // Determine and update points of the team
+    // Determine and update total earned points of the team
     public void updatePoints() {
         double sum = 0;
+        double helper = 0;
         for (Player player : players) {
-            sum += player.getPoints();
+            // Times modifier
+            // wacky implementation, fix later
+            if (player.getPosition() == Position.CAPTAIN) {
+                helper = player.getPoints() * Position.CAPTAIN.getModifier();
+                sum += helper;
+                helper = 0;
+            // this is dumb
+            } else if (player.getPosition() == Position.UNDERDOG) {
+                helper = player.getPoints() * Position.UNDERDOG.getModifier();
+                sum += helper;
+                helper = 0;
+            } else if (player.getPosition() == Position.REGULAR) {
+                sum += player.getPoints();
+            }
         }
 
         this.points = sum;
     }
+
+    // Maybe void updatePointsWithUnderdogs() ?
 
 }

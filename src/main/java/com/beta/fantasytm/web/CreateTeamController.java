@@ -94,7 +94,6 @@ public class CreateTeamController {
         List<Player> toReturn = players.stream()
                 .filter(x -> x.getPosition().equals(position))
                 .collect(Collectors.toList());
-        log.info(toReturn.toString());
         return toReturn;
     }
 

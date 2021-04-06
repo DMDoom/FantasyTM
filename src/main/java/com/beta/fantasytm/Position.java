@@ -12,7 +12,7 @@ public enum Position {
         this.modifier = modifier;
     }
 
-    private double getModifier() {
+    public double getModifier() {
         return this.modifier;
     }
 }
