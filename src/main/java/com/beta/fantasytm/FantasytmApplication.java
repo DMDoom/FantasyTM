@@ -23,8 +23,28 @@ public class FantasytmApplication {
 				ISSUES
 
 				TODO:
-				- finish admin hub, it needs to update all teams value based on its player list
-				 */
+				- SEMI DONE finish admin hub, it needs to update all teams value based on its player list
+				- add chips and transfers
+
+				TRANSFERS;
+				- make all players have int popularity, it will:
+					* increase by one for each buy (not counting team creation)
+				 	* decrease by one for each sell
+				- transfers can be made in the team hub
+				- only one transfer can be made per week
+
+				PLANNED FOR LATER
+				CHIPS;
+				- any team can have a chip active
+				- chip will provide various bonuses
+				- chips available
+					* BOOST PLAYER (give 2x points to a player for this week, does not stack)
+					* CAPTAIN BUFF (3x points instead of 2x)
+					*
+					*
+				- tie chips to Wallets
+
+				*/
 
 
 				// ABSOLUTELY FUCKING DISGUSTING

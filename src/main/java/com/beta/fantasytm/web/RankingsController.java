@@ -1,14 +1,13 @@
 package com.beta.fantasytm.web;
 
-import com.beta.fantasytm.Player;
 import com.beta.fantasytm.Team;
 import com.beta.fantasytm.data.PlayerRepository;
 import com.beta.fantasytm.data.TeamRepository;
+import com.beta.fantasytm.web.forms.ShowTeamsForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.Collection;

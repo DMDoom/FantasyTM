@@ -1,4 +1,4 @@
-package com.beta.fantasytm.web;
+package com.beta.fantasytm.web.forms;
 
 import com.beta.fantasytm.Team;
 import lombok.Data;

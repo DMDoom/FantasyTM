@@ -22,8 +22,11 @@ public class Team {
     @OneToOne
     private User user;
 
+    // Might need playersCaptains
+    // playersRegulars
+    // playersUnderdogs
     @OneToMany
-    @Size(min = 6, message = "Team is incomplete")
+    @Size(min = 5, message = "Team needs at least 5 players!")
     private List<Player> players;
 
     private Long cost;

@@ -21,6 +21,7 @@
         <div class="part-group" id="captain">
             <h3>Choose your captain:</h3>
             <div th:each="player : ${captain}">
+                <!-- name attribute is important because its the one that gets used in POST and GET requests -->
                 <input name="players" type="checkbox" th:value="${player.id}"/>
                 <span th:text="${player.name}">PLAYER</span><br/>
             </div>
