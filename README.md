@@ -1528,3 +1528,65 @@ input[type=text] {
 
 </body>
 ```
+
+```html
+<head>
+  <link href='https://fonts.googleapis.com/css?family=Rubik' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="stylesCreateTeam.css">
+</head>
+
+  <div class="header">
+    <a href="#default" class="logo">FANTASY TM</a>
+    <div class="header-right">
+      <a href="#about">Rankings</a>
+      <a href="#contact">Register</a>
+      <a href="#about">Login</a>
+      <button class="button" disabled>CREATE YOUR TEAM</button>
+    </div>
+</div>
+    
+<div class="grid-container">
+  <div class="teammanage">
+    <div class="gridHeader">
+      <h1> YOUR TEAM </h1>
+    </div>
+     <table style="width:100%" cellspacing="0">
+       <tr>
+         <td class="name"><p>CarlJr.</p></td>
+         <td><button class="buy-button">TRANSFER</button></td>
+       </tr>
+         <td class="name"><p>Kappa.</p></td>
+         <td><button class="buy-button">TRANSFER</button></td>
+        </tr>
+         <td class="name"><p>tween</p></td>
+         <td><button class="buy-button">TRANSFER</button></td>
+        </tr>
+         <td class="name"><p>Spammiej</p></td>
+         <td><button class="buy-button">TRANSFER</button></td>
+        </tr>
+         <td class="name"><p>MASSA.</p></td>
+         <td><button class="buy-button">TRANSFER</button></td>
+        </tr>
+         <td class="name"><p>riolu</p></td>
+         <td><button class="buy-button">TRANSFER</button></td>
+        </tr>
+     </table>
+  </div>
+  
+  <div class="tokens">
+    <div class="gridHeader">
+      <h1> TOKENS </h1>
+    </div>
+    <div class="card">
+      <p>test</p>
+    </div>
+  </div>
+  
+  <div class="playerchanges">
+  </div>
+  
+  <div class="rankings">
+    
+  </div>
+</div>
+```
