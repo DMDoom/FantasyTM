@@ -1529,6 +1529,8 @@ input[type=text] {
 </body>
 ```
 
+# Manage team page
+
 ```html
 <head>
   <link href='https://fonts.googleapis.com/css?family=Rubik' rel='stylesheet' type='text/css'>
@@ -1553,21 +1555,27 @@ input[type=text] {
      <table style="width:100%" cellspacing="0">
        <tr>
          <td class="name"><p>CarlJr.</p></td>
+         <td class="points"><p>500</p></td>
          <td><button class="buy-button">TRANSFER</button></td>
        </tr>
          <td class="name"><p>Kappa.</p></td>
+         <td class="points"><p>500</p></td>
          <td><button class="buy-button">TRANSFER</button></td>
         </tr>
          <td class="name"><p>tween</p></td>
+          <td class="points"><p>500</p></td>
          <td><button class="buy-button">TRANSFER</button></td>
         </tr>
          <td class="name"><p>Spammiej</p></td>
+          <td class="points"><p>500</p></td>
          <td><button class="buy-button">TRANSFER</button></td>
         </tr>
          <td class="name"><p>MASSA.</p></td>
+         <td class="points"><p>500</p></td>
          <td><button class="buy-button">TRANSFER</button></td>
         </tr>
          <td class="name"><p>riolu</p></td>
+         <td class="points"><p>500</p></td>
          <td><button class="buy-button">TRANSFER</button></td>
         </tr>
      </table>
@@ -1575,11 +1583,29 @@ input[type=text] {
   
   <div class="tokens">
     <div class="gridHeader">
-      <h1> TOKENS </h1>
+      <h1>BUFFS</h1>
     </div>
-    <div class="card">
-      <p>test</p>
-    </div>
+    
+    <div class="cards">
+      <div class="card">
+        <h2>TRIP CAPTAIN</h2>
+        <h3>Your captain will score 1.5x</h3>
+        <div class="img"></div>
+        <button class="buy-button" style="margin-bottom: 25px;">ACTIVATE</button>
+      </div>
+      <div class="card">
+        <h2>RUSH WEEK</h2>
+        <h3>Regular players all score 1.5x</h3>
+        <div class="img"></div>
+        <button class="buy-button" style="margin-bottom: 25px;">ACTIVATE</button>
+      </div>
+      <div class="card">
+        <h2>QUAD UNDER</h2>
+        <h3>Your underdog will score 4x</h3>
+        <div class="img"></div>
+        <button class="buy-button" style="margin-bottom: 25px;">ACTIVATE</button>
+      </div>
+    </div> 
   </div>
   
   <div class="playerchanges">
@@ -1730,28 +1756,12 @@ p {
   /*padding-left: 47%;*/
 }
 
-#testtt p {
-  padding-top: 30px important!;
-  font-size: 30px;
-  font-weight: bold;
-  font-family: 'Rubik';
-  color: var(--white);
-  padding-left: 47%;
-}
-
 h1 {
   text-align: center;
   font-family: 'Rubik';
   font-size: 30px;
   color: #FFFFFF;
   font-weight: bold;
-}
-
-h2 {
-  text-align: center;
-  font-family: 'Rubik';
-  font-size: 12px;
-  color: #666666;
 }
 
 .grid-container {
@@ -1805,6 +1815,7 @@ tr:nth-child(even) {
 .buy-button {
   float: right;
   margin-right: 20px;
+  margin-left: 20px;
   margin-top:5px;
   margin-bottom: 5px;
   background-color: #6edc45;
@@ -1834,11 +1845,53 @@ tr:nth-child(even) {
 }
 
 .card {
-  border: 5px outset red;
-  background-color: lightblue;
+  box-shadow: 2px 2px 2px #b3b3b3;
+  background-color: #cdf3bf;
   text-align: center;
-  min-height: 120px;
+  min-height: 350px;
+  max-width: 250px;
+  margin: 10px;
+  padding: 0 0 0 0;
+  display:flex;
+  flex-direction: column;
+  min-height: 350px;
+  max-width: 250px;
 }
 
+.cards {
+  display:flex;
+  justify-content: space-evenly;
+  margin-bottom: 25px;
+}
 
+h2 {
+  float: left;
+  margin-top: 25px;
+  margin-left: 45px;
+  margin-right: 45px;
+  margin-bottom: 0px;
+  text-align: left;
+  font-family: 'Rubik';
+  font-size: 24px;
+  color: #232323;
+  font-weight: bold;
+}
+
+h3 {
+  float: center;
+  text-align: left;
+  font-family: 'Rubik';
+  font-size: 14px;
+  color: grey;
+  text-align: center;
+}
+
+.img {
+  background-color: grey;
+  min-width: 200px;
+  min-height: 200px;
+  max-width: 200px;
+  max-height: 200px;
+  margin: 20px;
+}
 ```
