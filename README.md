@@ -1552,32 +1552,48 @@ input[type=text] {
     <div class="gridHeader">
       <h1> YOUR TEAM </h1>
     </div>
-     <table style="width:100%" cellspacing="0">
+     <table class="playerTable" style="width:100%" cellspacing="0">
+      <thead>
+        <tr>
+            <th scope="col"><p>Player</p></th>
+            <th scope="col"><p>Points</p></th>
+            <th scope="col"><p>Change</p></th>
+            <th scope="col"><p>Action</p></th>
+        </tr>
+      </thead>
+    <tbody>
        <tr>
          <td class="name"><p>CarlJr.</p></td>
          <td class="points"><p>500</p></td>
+         <td class="points"><p>+ 5%</p></td>
          <td><button class="buy-button">TRANSFER</button></td>
        </tr>
          <td class="name"><p>Kappa.</p></td>
          <td class="points"><p>500</p></td>
+         <td class="points"><p>+ 5%</p></td>
          <td><button class="buy-button">TRANSFER</button></td>
         </tr>
          <td class="name"><p>tween</p></td>
-          <td class="points"><p>500</p></td>
+         <td class="points"><p>500</p></td>
+         <td class="points"><p>+ 5%</p></td>
          <td><button class="buy-button">TRANSFER</button></td>
         </tr>
-         <td class="name"><p>Spammiej</p></td>
+          <td class="name"><p>Spammiej</p></td>
           <td class="points"><p>500</p></td>
+          <td class="points"><p>+ 5%</p></td>
          <td><button class="buy-button">TRANSFER</button></td>
         </tr>
          <td class="name"><p>MASSA.</p></td>
          <td class="points"><p>500</p></td>
+         <td class="points"><p>+ 5%</p></td>
          <td><button class="buy-button">TRANSFER</button></td>
         </tr>
          <td class="name"><p>riolu</p></td>
          <td class="points"><p>500</p></td>
+         <td class="points"><p>+ 5%</p></td>
          <td><button class="buy-button">TRANSFER</button></td>
         </tr>
+      </tbody>
      </table>
   </div>
   
@@ -1617,6 +1633,7 @@ input[type=text] {
 </div>
 ```
 
+# CSS manage page
 ```css
 :root {
   --white: #efefef;
@@ -1746,9 +1763,6 @@ body {
 }
 
 p {
-  float: left;
-  margin-left: 20px;
-  text-align: left;
   font-family: 'Rubik';
   font-size: 17px;
   color: #232323;
@@ -1805,6 +1819,7 @@ h1 {
 td, th {
   margin: 5px;
   border-spacing:5em;
+  text-align: center;
 }
 
 tr:nth-child(even) {
@@ -1813,7 +1828,6 @@ tr:nth-child(even) {
 }
 
 .buy-button {
-  float: right;
   margin-right: 20px;
   margin-left: 20px;
   margin-top:5px;
@@ -1832,7 +1846,6 @@ tr:nth-child(even) {
   border-radius: 6px;
   -webkit-transition-duration: 0.4s; /* Safari */
   transition-duration: 0.4s;
-  min-width: 100px;
 }
 
 .buy-button:hover {
@@ -1842,6 +1855,10 @@ tr:nth-child(even) {
 
 .buy-button:disabled {
   background-color: #707070
+}
+
+.playerTable {
+  table-layout: fixed;
 }
 
 .card {
@@ -1894,4 +1911,6 @@ h3 {
   max-height: 200px;
   margin: 20px;
 }
+
+
 ```
