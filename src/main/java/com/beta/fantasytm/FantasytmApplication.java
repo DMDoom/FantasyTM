@@ -30,7 +30,7 @@ public class FantasytmApplication {
 				- make all players have int popularity, it will:
 					* increase by one for each buy (not counting team creation)
 				 	* decrease by one for each sell
-				- transfers can be made in the team hub
+				- transfers can be made in the team hubs
 				- only one transfer can be made per week
 
 				PLANNED FOR LATER
@@ -40,8 +40,6 @@ public class FantasytmApplication {
 				- chips available
 					* BOOST PLAYER (give 2x points to a player for this week, does not stack)
 					* CAPTAIN BUFF (3x points instead of 2x)
-					*
-					*
 				- tie chips to Wallets
 
 				*/

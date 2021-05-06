@@ -1,9 +1,6 @@
 package com.beta.fantasytm.web;
 
-import com.beta.fantasytm.Player;
-import com.beta.fantasytm.Team;
-import com.beta.fantasytm.User;
-import com.beta.fantasytm.Wallet;
+import com.beta.fantasytm.*;
 import com.beta.fantasytm.data.PlayerRepository;
 import com.beta.fantasytm.data.TeamRepository;
 import com.beta.fantasytm.data.WalletRepository;
@@ -58,12 +55,18 @@ public class ManageController {
         // User team
         model.addAttribute("userTeam", userTeam);
 
+        // User buffs
+        ArrayList<Buff> buffs = new ArrayList<>();
+        buffs.addAll(walletRepo.findByUserId(user.getId()).getBuffs());
+        model.addAttribute("userBuffs", buffs);
+
         // User wallet
         Wallet userWallet = walletRepo.findByUserId(user.getId());
         model.addAttribute("userWallet", userWallet);
 
-        // For return team, the one it will bind it to
+        // For return team, the one it will bind it to after transfers and buffs
         model.addAttribute("newTeam", new Team());
+
     }
 
     @GetMapping
@@ -71,6 +74,28 @@ public class ManageController {
         return "manage";
     }
 
+    // NEEDS TESTING
+    @PostMapping(params = "action=updateBuffs")
+    public String updateBuffs(@AuthenticationPrincipal User user, @ModelAttribute("newTeam") Team newTeam, Errors errors) {
+
+        // Overwrite user's team
+        Team team = teamRepo.findByUserId(user.getId());
+        team.setBuff(newTeam.getBuff());
+        teamRepo.save(team);
+
+        // Subtract buffs from wallet
+        // Ensure this post is impossible unless the user has the buff in the first place
+        Wallet wallet = walletRepo.findByUserId(user.getId());
+        wallet.getBuffs().remove(newTeam.getBuff());
+        walletRepo.save(wallet);
+
+
+        return "redirect:/manage";
+    }
+
+    /*
+    When transferring, a newly formed team will be created and returned. It will then overwrite the original team from
+    before the transfer
     @PostMapping(params = "action=updateAfterTransfer")
     public String updateAfterTransfer(@Valid @ModelAttribute("team") Team team, @AuthenticationPrincipal User user, Errors errors) {
         if (errors.hasErrors()) {
@@ -83,6 +108,7 @@ public class ManageController {
 
         return "redirect:/manage";
     }
+    */
 
     // Implement token activation here
     // First will need planning and implementing the feature in other areas!

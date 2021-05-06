@@ -62,9 +62,9 @@ public class TerminalController {
         return "redirect:/login";
     }
 
-    // UNTESTED
     // TODO:
     // TEST
+    // ALSO ADJUST FOR ACTIVE BUFFS
     @PostMapping(params = "action=updateBasedOnCaptains")
     public String processFirstSix(@ModelAttribute("form") UpdateTeamsForm form) {
 

@@ -8,4 +8,5 @@ import java.util.List;
 public interface WalletRepository extends CrudRepository<Wallet, Long> {
 
     Wallet findByUserId(Long id); //testing
+
 }
