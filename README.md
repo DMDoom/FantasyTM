@@ -1528,3 +1528,389 @@ input[type=text] {
 
 </body>
 ```
+
+# Manage team page
+
+```html
+<head>
+  <link href='https://fonts.googleapis.com/css?family=Rubik' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="stylesCreateTeam.css">
+</head>
+
+  <div class="header">
+    <a href="#default" class="logo">FANTASY TM</a>
+    <div class="header-right">
+      <a href="#about">Rankings</a>
+      <a href="#contact">Register</a>
+      <a href="#about">Login</a>
+      <button class="button" disabled>CREATE YOUR TEAM</button>
+    </div>
+</div>
+    
+<div class="grid-container">
+  <div class="teammanage">
+    <div class="gridHeader">
+      <h1> YOUR TEAM </h1>
+    </div>
+     <table class="playerTable" style="width:100%" cellspacing="0">
+      <thead>
+        <tr>
+            <th scope="col"><p>Player</p></th>
+            <th scope="col"><p>Points</p></th>
+            <th scope="col"><p>Change</p></th>
+            <th scope="col"><p>Action</p></th>
+        </tr>
+      </thead>
+    <tbody>
+       <tr>
+         <td class="name"><p>CarlJr.</p></td>
+         <td class="points"><p>500</p></td>
+         <td class="points"><p>+ 5%</p></td>
+         <td><button class="buy-button">TRANSFER</button></td>
+       </tr>
+         <td class="name"><p>Kappa.</p></td>
+         <td class="points"><p>500</p></td>
+         <td class="points"><p>+ 5%</p></td>
+         <td><button class="buy-button">TRANSFER</button></td>
+        </tr>
+         <td class="name"><p>tween</p></td>
+         <td class="points"><p>500</p></td>
+         <td class="points"><p>+ 5%</p></td>
+         <td><button class="buy-button">TRANSFER</button></td>
+        </tr>
+          <td class="name"><p>Spammiej</p></td>
+          <td class="points"><p>500</p></td>
+          <td class="points"><p>+ 5%</p></td>
+         <td><button class="buy-button">TRANSFER</button></td>
+        </tr>
+         <td class="name"><p>MASSA.</p></td>
+         <td class="points"><p>500</p></td>
+         <td class="points"><p>+ 5%</p></td>
+         <td><button class="buy-button">TRANSFER</button></td>
+        </tr>
+         <td class="name"><p>riolu</p></td>
+         <td class="points"><p>500</p></td>
+         <td class="points"><p>+ 5%</p></td>
+         <td><button class="buy-button">TRANSFER</button></td>
+        </tr>
+      </tbody>
+     </table>
+  </div>
+  
+  <div class="tokens">
+    <div class="gridHeader">
+      <h1>BUFFS</h1>
+    </div>
+    
+    <div class="cards">
+      <div class="card">
+        <h2>TRIP CAPTAIN</h2>
+        <h3>Your captain will score 1.5x</h3>
+        <div class="img"></div>
+        <button class="buy-button" style="margin-bottom: 25px;">ACTIVATE</button>
+      </div>
+      <div class="card">
+        <h2>RUSH WEEK</h2>
+        <h3>Regular players all score 1.5x</h3>
+        <div class="img"></div>
+        <button class="buy-button" style="margin-bottom: 25px;">ACTIVATE</button>
+      </div>
+      <div class="card">
+        <h2>QUAD UNDER</h2>
+        <h3>Your underdog will score 4x</h3>
+        <div class="img"></div>
+        <button class="buy-button" style="margin-bottom: 25px;">ACTIVATE</button>
+      </div>
+    </div> 
+  </div>
+  
+  <div class="playerchanges">
+  </div>
+  
+  <div class="rankings">
+    
+  </div>
+</div>
+```
+
+# CSS manage page
+```css
+:root {
+  --white: #efefef;
+}
+
+body {
+  background-color: #80FF80;
+  background-image: url(https://www.gamegrin.com/assets/game/trackmania-2020/screenshots/_resampled/SetWidth1920-trackmania-2020-screenshots-11.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  margin:0;
+}
+
+.image-wrap{
+    background: rgba(248, 248, 255, 0.3);
+    overflow: hidden; /* needs scroll for local version */
+    height: 100%;
+    z-index: 2;
+}
+
+/* Style the header with a grey background and some padding */
+.header {
+  overflow: hidden;
+  background-color: #fafafa;
+  padding: 20px 100px;
+  box-shadow: 2px 2px 2px #b3b3b3;
+}
+
+/* Style the header links */
+.header a {
+  margin: 8px;
+  margin-left: 20px;
+  margin-right: 20px;
+  float: left;
+  color: #232323;
+  text-align: center;
+  padding: 12px;
+  text-decoration: none;
+  letter-spacing: 1px;
+  border-radius: 4px;
+  font-family: 'Rubik';
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* Style the logo link (notice that we set the same value of line-height and font-size to prevent the header to increase when the font gets bigger */
+.header a.logo {
+  font-weight: bold;
+  font-family: 'Rubik';
+  font-size: 25px;
+  color: #232323;
+}
+
+/* Change the background color on mouse-over */
+.header a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Float the link section to the right */
+.header-right {
+  float: right;
+}
+
+.button {
+  position: relative;
+  margin-left: 20px;
+  background-color: #6edc45;
+  border: none;
+  font-size: 18px;
+  font-weight: bold;
+  font-family: 'Rubik';
+  color: #FFFFFF;
+  letter-spacing: 1px;
+  padding: 20px;
+  width: 250x;
+  text-align: center;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  text-decoration: none;
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: 6px;
+  box-shadow: 3px 3px 3px #b3b3b3;
+}
+
+.button:after {
+  content: "";
+  background: #90EE90;
+  display: block;
+  position: absolute;
+  padding-top: 300%;
+  padding-left: 350%;
+  margin-left: -20px!important;
+  margin-top: -120%;
+  opacity: 0;
+  transition: all 0.8s
+}
+
+.button:active:after {
+  padding: 0;
+  margin: 0;
+  opacity: 1;
+  transition: 0s
+}
+
+.button:hover {
+  background-color: #4CAF50; /* Green */
+  color: white;
+}
+
+.button:disabled {
+  background-color: #909090;
+  color:#fff; 
+}
+
+/* Add media queries for responsiveness - when the screen is 500px wide or less, stack the links on top of each other */
+@media screen and (max-width: 500px) {
+  .header a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+  .header-right {
+    float: none;
+  }
+}
+
+p {
+  font-family: 'Rubik';
+  font-size: 17px;
+  color: #232323;
+  font-weight: bold;
+  /*padding-left: 47%;*/
+}
+
+h1 {
+  text-align: center;
+  font-family: 'Rubik';
+  font-size: 30px;
+  color: #FFFFFF;
+  font-weight: bold;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-areas:
+    "teammanage teammanage tokens tokens"
+    "teammanage teammanage tokens tokens"
+    "playerchanges playerchanges rankings rankings";
+}
+
+.teammanage {
+  grid-area: teammanage;
+  background-color: var(--white);
+  box-shadow: 2px 2px 2px grey;
+  border: 1px solid grey;
+  margin: 75px;
+}
+
+.tokens {
+  grid-area: tokens;
+  background-color: var(--white);
+  box-shadow: 2px 2px 2px grey;
+  border: 1px solid grey;
+  margin: 75px;
+}
+
+.gridHeader {
+  background-color: #6edc45;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
+
+.playerchanges { grid-area: playerchanges; }
+
+.rankings { grid-area: rankings; }
+
+td, th {
+  margin: 5px;
+  border-spacing:5em;
+  text-align: center;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+  border-radius: 30px;
+}
+
+.buy-button {
+  margin-right: 20px;
+  margin-left: 20px;
+  margin-top:5px;
+  margin-bottom: 5px;
+  background-color: #6edc45;
+  border: none;
+  font-size: 17px;
+  font-weight: bold;
+  font-family: 'Rubik';
+  color: #FFFFFF;
+  letter-spacing: 1px;
+  padding: 20px;
+  width: 250x;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 6px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
+
+.buy-button:hover {
+  background-color: #4CAF50; /* Green */
+  color: white;
+}
+
+.buy-button:disabled {
+  background-color: #707070
+}
+
+.playerTable {
+  table-layout: fixed;
+}
+
+.card {
+  box-shadow: 2px 2px 2px #b3b3b3;
+  background-color: #cdf3bf;
+  text-align: center;
+  min-height: 350px;
+  max-width: 250px;
+  margin: 10px;
+  padding: 0 0 0 0;
+  display:flex;
+  flex-direction: column;
+  min-height: 350px;
+  max-width: 250px;
+}
+
+.cards {
+  display:flex;
+  justify-content: space-evenly;
+  margin-bottom: 25px;
+}
+
+h2 {
+  float: left;
+  margin-top: 25px;
+  margin-left: 45px;
+  margin-right: 45px;
+  margin-bottom: 0px;
+  text-align: left;
+  font-family: 'Rubik';
+  font-size: 24px;
+  color: #232323;
+  font-weight: bold;
+}
+
+h3 {
+  float: center;
+  text-align: left;
+  font-family: 'Rubik';
+  font-size: 14px;
+  color: grey;
+  text-align: center;
+}
+
+.img {
+  background-color: grey;
+  min-width: 200px;
+  min-height: 200px;
+  max-width: 200px;
+  max-height: 200px;
+  margin: 20px;
+}
+
+
+```
