@@ -53,6 +53,7 @@ public class Team {
     }
 
     // Determine and update total earned points of the team
+    // MARKED FOR FIX
     public void updatePoints() {
         double sum = 0;
         double helper = 0;

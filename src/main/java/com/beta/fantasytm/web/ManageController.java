@@ -4,6 +4,7 @@ import com.beta.fantasytm.*;
 import com.beta.fantasytm.data.PlayerRepository;
 import com.beta.fantasytm.data.TeamRepository;
 import com.beta.fantasytm.data.WalletRepository;
+import com.beta.fantasytm.web.forms.BuffWrapper;
 import com.beta.fantasytm.web.forms.ShowTeamsForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -55,17 +56,14 @@ public class ManageController {
         // User team
         model.addAttribute("userTeam", userTeam);
 
-        // User buffs
-        ArrayList<Buff> buffs = new ArrayList<>();
-        buffs.addAll(walletRepo.findByUserId(user.getId()).getBuffs());
-        model.addAttribute("userBuffs", buffs);
-
         // User wallet
         Wallet userWallet = walletRepo.findByUserId(user.getId());
         model.addAttribute("userWallet", userWallet);
 
-        // For return team, the one it will bind it to after transfers and buffs
+        // For return team, the one it will bind it to
         model.addAttribute("newTeam", new Team());
+
+        model.addAttribute("buff", new BuffWrapper());
 
     }
 
@@ -75,18 +73,18 @@ public class ManageController {
     }
 
     // NEEDS TESTING
-    @PostMapping(params = "action=updateBuffs")
-    public String updateBuffs(@AuthenticationPrincipal User user, @ModelAttribute("newTeam") Team newTeam, Errors errors) {
+    @PostMapping
+    public String updateBuffs(@AuthenticationPrincipal User user, @ModelAttribute("buff") BuffWrapper buff, Errors errors) {
 
         // Overwrite user's team
         Team team = teamRepo.findByUserId(user.getId());
-        team.setBuff(newTeam.getBuff());
+        team.setBuff(buff.getBuff());
         teamRepo.save(team);
 
         // Subtract buffs from wallet
         // Ensure this post is impossible unless the user has the buff in the first place
         Wallet wallet = walletRepo.findByUserId(user.getId());
-        wallet.getBuffs().remove(newTeam.getBuff());
+        wallet.getBuffs().remove(buff.getBuff());
         walletRepo.save(wallet);
 
 

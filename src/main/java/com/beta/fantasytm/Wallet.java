@@ -1,9 +1,12 @@
 package com.beta.fantasytm;
 
+import com.beta.fantasytm.web.forms.BuffWrapper;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.persistence.Entity;
 import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Entity
@@ -16,9 +19,9 @@ public class Wallet {
     @OneToOne
     private User user;
 
+    // BUG HERE POSSIBLY
     @OneToMany
-    @Enumerated(EnumType.ORDINAL)
-    private ArrayList<Buff> buffs;
+    private List<BuffWrapper> buffs;
 
     private Long balance;
 
