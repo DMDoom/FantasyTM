@@ -24,8 +24,8 @@ public class FantasytmApplication {
 				ISSUES
 
 				TODO:
-				- SEMI DONE finish admin hub, it needs to update all teams value based on its player list
-				- add chips and transfers
+				- add chips
+				- FINISH THE ADMIN HUB TO TAKE INTO ACCOUNT BUFFS, ALSO TEST IT
 
 				TRANSFERS;
 				- make all players have int popularity, it will:

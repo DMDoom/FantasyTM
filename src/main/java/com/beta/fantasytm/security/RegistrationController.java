@@ -59,10 +59,7 @@ public class RegistrationController {
             // Set default wallet buffs
             List<Buff> buffs = new ArrayList<>();
             buffRepo.findAll().forEach(buff -> buffs.add(buff));
-            wallet.getBuffs().addAll(buffs); // keeps throwing null pointer
-
-            // gives a null pointer exception
-            // wallet.getBuffs().addAll((Collection<? extends Buff>) buffRepo.findAll());
+            wallet.getBuffs().addAll(buffs);
 
             // Save the wallet
             walletRepo.save(wallet);

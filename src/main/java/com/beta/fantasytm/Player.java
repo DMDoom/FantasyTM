@@ -30,6 +30,7 @@ public class Player implements Persistable<Long> {
     @NonNull
     private double points;
 
+    @Enumerated(EnumType.STRING)
     private Position position;
 
     @Override
