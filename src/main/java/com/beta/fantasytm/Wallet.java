@@ -1,6 +1,5 @@
 package com.beta.fantasytm;
 
-import com.beta.fantasytm.web.forms.BuffWrapper;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -19,11 +18,18 @@ public class Wallet {
     @OneToOne
     private User user;
 
-    // BUG HERE POSSIBLY
     @OneToMany
-    private List<BuffWrapper> buffs;
+    private List<Buff> buffs;
 
     private Long balance;
+
+    public Wallet() {
+        this.buffs = new ArrayList<>();
+    }
+
+    public List<Buff> getBuffs() {
+        return this.buffs;
+    }
 
     public void subtractBalance(Long number) {
         this.balance = this.balance - number;

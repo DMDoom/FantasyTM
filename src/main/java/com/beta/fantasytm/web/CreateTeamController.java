@@ -65,6 +65,7 @@ public class CreateTeamController {
 
         // Saving the team to the database
         team.setUser(user);
+        team.setActiveBuff(BuffType.NULL);
         teamRepo.save(team);
 
         // Placeholder redirect

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Car Cloud</title>
+</head>
+<body>
+<h1>Register</h1>
+<form method="POST" th:action="@{/manage}" th:object="${buff}">
+    <div th:each="buffWrapper : ${availableBuffs}">
+        <!-- name attribute is important because its the one that gets used in POST and GET requests -->
+        <input name="buff" type="checkbox" th:value="${buffWrapper.buff}"/>
+        <span th:text="${buffWrapper.buff}">BUFF</span><br/>
+    </div>
+    <button type="submit" value="Apply buff">Apply buff</button>
+</form>
+</body>
+</html>

@@ -1,10 +1,11 @@
 package com.beta.fantasytm.web;
 
 import com.beta.fantasytm.*;
+import com.beta.fantasytm.data.BuffRepository;
 import com.beta.fantasytm.data.PlayerRepository;
 import com.beta.fantasytm.data.TeamRepository;
 import com.beta.fantasytm.data.WalletRepository;
-import com.beta.fantasytm.web.forms.BuffWrapper;
+import com.beta.fantasytm.Buff;
 import com.beta.fantasytm.web.forms.ShowTeamsForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -19,9 +20,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 
 @Controller
@@ -32,12 +33,14 @@ public class ManageController {
     private final PlayerRepository playerRepo;
     private TeamRepository teamRepo;
     private WalletRepository walletRepo;
+    private BuffRepository buffRepo;
 
     @Autowired
-    public ManageController(PlayerRepository playerRepo, TeamRepository teamRepo, WalletRepository walletRepo) {
+    public ManageController(PlayerRepository playerRepo, TeamRepository teamRepo, WalletRepository walletRepo, BuffRepository buffRepo) {
         this.playerRepo = playerRepo;
         this.teamRepo = teamRepo;
         this.walletRepo = walletRepo;
+        this.buffRepo = buffRepo;
     }
 
     @ModelAttribute
@@ -63,8 +66,13 @@ public class ManageController {
         // For return team, the one it will bind it to
         model.addAttribute("newTeam", new Team());
 
-        model.addAttribute("buff", new BuffWrapper());
+        // Buff to return
+        model.addAttribute("buff", new Buff());
 
+        // Pass a list of available buffs
+        List<Buff> buffs = new ArrayList<>();
+        buffRepo.findAll().forEach(buff -> buffs.add(buff));
+        model.addAttribute("availableBuffs", buffs);
     }
 
     @GetMapping
@@ -74,19 +82,24 @@ public class ManageController {
 
     // NEEDS TESTING
     @PostMapping
-    public String updateBuffs(@AuthenticationPrincipal User user, @ModelAttribute("buff") BuffWrapper buff, Errors errors) {
+    public String updateBuffs(@AuthenticationPrincipal User user, @ModelAttribute("buff") Buff buff, Errors errors) {
+
+        // CONSISTENCY ISSUE:
+        // Team holds:
+        // BuffType activeBuff
+        // List<Buff> buffs
+        // Either make both Buff, or BuffType
+        // Reconsider if a wrapper class is even necessary
 
         // Overwrite user's team
         Team team = teamRepo.findByUserId(user.getId());
-        team.setBuff(buff.getBuff());
+        team.setActiveBuff(buff.getBuff());
         teamRepo.save(team);
 
         // Subtract buffs from wallet
-        // Ensure this post is impossible unless the user has the buff in the first place
         Wallet wallet = walletRepo.findByUserId(user.getId());
-        wallet.getBuffs().remove(buff.getBuff());
+        wallet.getBuffs().remove(buff); // Evaluates equality only on BuffType, not ID
         walletRepo.save(wallet);
-
 
         return "redirect:/manage";
     }

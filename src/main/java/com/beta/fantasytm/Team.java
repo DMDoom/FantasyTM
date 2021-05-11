@@ -6,7 +6,6 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.List;
-import java.util.Set;
 
 @Data
 @Entity
@@ -27,7 +26,8 @@ public class Team {
     @Size(min = 5, message = "Team needs at least 5 players!")
     private List<Player> players;
 
-    private Buff buff;
+    @Enumerated(EnumType.STRING)
+    private BuffType activeBuff;
 
     private Long cost;
 

@@ -1,5 +1,6 @@
 package com.beta.fantasytm;
 
+import com.beta.fantasytm.data.BuffRepository;
 import com.beta.fantasytm.data.PlayerRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -15,7 +16,7 @@ public class FantasytmApplication {
 
 
 	@Bean
-	public CommandLineRunner dataLoader(PlayerRepository repo) {
+	public CommandLineRunner dataLoader(PlayerRepository repo, BuffRepository buffRepo) {
 		return new CommandLineRunner() {
 			@Override
 			public void run(String... args) throws Exception {
@@ -41,8 +42,13 @@ public class FantasytmApplication {
 					* BOOST PLAYER (give 2x points to a player for this week, does not stack)
 					* CAPTAIN BUFF (3x points instead of 2x)
 				- tie chips to Wallets
-
 				*/
+
+				// Buff save
+				buffRepo.save(new Buff(1L, BuffType.NULL));
+				buffRepo.save(new Buff(2L, BuffType.FIRE_WEEK));
+				buffRepo.save(new Buff(3L, BuffType.TRIPLE_CAPTAIN));
+				buffRepo.save(new Buff(4L, BuffType.QUAD_UNDERDOG));
 
 
 				// ABSOLUTELY FUCKING DISGUSTING
