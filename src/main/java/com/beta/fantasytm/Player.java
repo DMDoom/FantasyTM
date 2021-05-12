@@ -16,7 +16,7 @@ import java.util.List;
 public class Player implements Persistable<Long> {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO) // was IDENTITY
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     //@Basic(optional = false)
     //@Column(name = "id", unique = true, nullable = false)

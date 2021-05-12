@@ -18,7 +18,7 @@ public class Wallet {
     @OneToOne
     private User user;
 
-    @OneToMany
+    @ManyToMany
     private List<Buff> buffs;
 
     private Long balance;

@@ -55,48 +55,48 @@ public class FantasytmApplication {
 				// But honestly, I don't see any better way of doing this if different roles need different points
 				// Only solution is maybe standard cost could be modified by the points modifier
 				// NOTE: Calling save() on something with identical ID will overwrite
-				repo.save(new Player(1L, "CarlJr", "SOLARY", 1000, 20, 600, Position.CAPTAIN));
-				repo.save(new Player(2L, "Pac", "MNM", 1000, 20, 600, Position.CAPTAIN));
-				repo.save(new Player(3L, "Aurel", "GAMINGPRIVE", 1000, 20, 600, Position.CAPTAIN));
-				repo.save(new Player(4L, "Gwen", "GAMEWARD", 1000, 20, 600, Position.CAPTAIN));
-				repo.save(new Player(5L, "Affi", "BDS", 1000, 20, 600, Position.CAPTAIN));
-				repo.save(new Player(6L, "Mudda", "EDELWEISS", 1000, 20, 600, Position.CAPTAIN));
-				repo.save(new Player(7L, "Bren", "KARMINE CORP", 1000, 20, 600, Position.CAPTAIN));
-				repo.save(new Player(8L, "Papou", "GAMERS ORIGIN", 1000, 20, 600, Position.CAPTAIN));
-				repo.save(new Player(9L, "Spam", "ALLIANCE", 1000, 20, 600, Position.CAPTAIN));
-				repo.save(new Player(10L, "Massa", "BIG", 1000, 20, 600, Position.CAPTAIN));
-				repo.save(new Player(11L, "Kappa", "MCLAREN SHADOW", 1000, 20, 600, Position.CAPTAIN));
-				repo.save(new Player(12L, "tween", "ORGLESS", 1000, 20, 600, Position.CAPTAIN));
-				repo.save(new Player(13L, "riolu", "NORDAVIND", 1000, 20, 600, Position.CAPTAIN));
-				repo.save(new Player(14L, "Scrapie", "LAZARUS", 1000, 20, 600, Position.CAPTAIN));
-				repo.save(new Player(15L, "evoN", "TEAM SECRET", 1000, 20, 600, Position.CAPTAIN));
-				repo.save(new Player(16L, "link", "GRIZI ESPORT", 1000, 20, 600, Position.CAPTAIN));
+				repo.save(new Player(1L, "CarlJr", "SOLARY", 1000, 20, 100, Position.CAPTAIN));
+				repo.save(new Player(2L, "Pac", "MNM", 1000, 20, 100, Position.CAPTAIN));
+				repo.save(new Player(3L, "Aurel", "GAMINGPRIVE", 1000, 20, 100, Position.CAPTAIN));
+				repo.save(new Player(4L, "Gwen", "GAMEWARD", 1000, 20, 100, Position.CAPTAIN));
+				repo.save(new Player(5L, "Affi", "BDS", 1000, 20, 100, Position.CAPTAIN));
+				repo.save(new Player(6L, "Mudda", "EDELWEISS", 1000, 20, 100, Position.CAPTAIN));
+				repo.save(new Player(7L, "Bren", "KARMINE CORP", 1000, 20, 100, Position.CAPTAIN));
+				repo.save(new Player(8L, "Papou", "GAMERS ORIGIN", 1000, 20, 100, Position.CAPTAIN));
+				repo.save(new Player(9L, "Spam", "ALLIANCE", 1000, 20, 100, Position.CAPTAIN));
+				repo.save(new Player(10L, "Massa", "BIG", 1000, 20, 100, Position.CAPTAIN));
+				repo.save(new Player(11L, "Kappa", "MCLAREN SHADOW", 1000, 20, 100, Position.CAPTAIN));
+				repo.save(new Player(12L, "tween", "ORGLESS", 1000, 20, 100, Position.CAPTAIN));
+				repo.save(new Player(13L, "riolu", "NORDAVIND", 1000, 20, 100, Position.CAPTAIN));
+				repo.save(new Player(14L, "Scrapie", "LAZARUS", 1000, 20, 100, Position.CAPTAIN));
+				repo.save(new Player(15L, "evoN", "TEAM SECRET", 1000, 20, 100, Position.CAPTAIN));
+				repo.save(new Player(16L, "link", "GRIZI ESPORT", 1000, 20, 100, Position.CAPTAIN));
 
-				repo.save(new Player(17L, "CarlJr", "SOLARY", 1000, 20, 250, Position.REGULAR));
-				repo.save(new Player(18L, "Pac", "MNM", 1000, 20, 250, Position.REGULAR));
-				repo.save(new Player(19L, "Aurel", "GAMINGPRIVE", 1000, 20, 250, Position.REGULAR));
-				repo.save(new Player(20L, "Gwen", "GAMEWARD", 1000, 20, 250, Position.REGULAR));
-				repo.save(new Player(21L, "Affi", "BDS", 1000, 20, 250, Position.REGULAR));
-				repo.save(new Player(22L, "Mudda", "EDELWEISS", 1000, 20, 250, Position.REGULAR));
-				repo.save(new Player(23L, "Bren", "KARMINE CORP", 1000, 20, 250, Position.REGULAR));
-				repo.save(new Player(24L, "Papou", "GAMERS ORIGIN", 1000, 20, 250, Position.REGULAR));
-				repo.save(new Player(25L, "Spam", "ALLIANCE", 1000, 20, 250, Position.REGULAR));
-				repo.save(new Player(26L, "Massa", "BIG", 1000, 20, 250, Position.REGULAR));
-				repo.save(new Player(27L, "Kappa", "MCLAREN SHADOW", 1000, 20, 250, Position.REGULAR));
-				repo.save(new Player(29L, "tween", "ORGLESS", 1000, 20, 250, Position.REGULAR));
-				repo.save(new Player(30L, "riolu", "NORDAVIND", 1000, 20, 250, Position.REGULAR));
-				repo.save(new Player(31L, "Scrapie", "LAZARUS", 1000, 20, 250, Position.REGULAR));
-				repo.save(new Player(32L, "evoN", "TEAM SECRET", 1000, 20, 250, Position.REGULAR));
-				repo.save(new Player(33L, "link", "GRIZI ESPORT", 1000, 20, 250, Position.REGULAR));
+				repo.save(new Player(17L, "CarlJr", "SOLARY", 1000, 20, 100, Position.REGULAR));
+				repo.save(new Player(18L, "Pac", "MNM", 1000, 20, 100, Position.REGULAR));
+				repo.save(new Player(19L, "Aurel", "GAMINGPRIVE", 1000, 20, 100, Position.REGULAR));
+				repo.save(new Player(20L, "Gwen", "GAMEWARD", 1000, 20, 100, Position.REGULAR));
+				repo.save(new Player(21L, "Affi", "BDS", 1000, 20, 100, Position.REGULAR));
+				repo.save(new Player(22L, "Mudda", "EDELWEISS", 1000, 20, 100, Position.REGULAR));
+				repo.save(new Player(23L, "Bren", "KARMINE CORP", 1000, 20, 100, Position.REGULAR));
+				repo.save(new Player(24L, "Papou", "GAMERS ORIGIN", 1000, 20, 100, Position.REGULAR));
+				repo.save(new Player(25L, "Spam", "ALLIANCE", 1000, 20, 100, Position.REGULAR));
+				repo.save(new Player(26L, "Massa", "BIG", 1000, 20, 100, Position.REGULAR));
+				repo.save(new Player(27L, "Kappa", "MCLAREN SHADOW", 1000, 20, 100, Position.REGULAR));
+				repo.save(new Player(28L, "tween", "ORGLESS", 1000, 20, 100, Position.REGULAR));
+				repo.save(new Player(29L, "riolu", "NORDAVIND", 1000, 20, 100, Position.REGULAR));
+				repo.save(new Player(30L, "Scrapie", "LAZARUS", 1000, 20, 100, Position.REGULAR));
+				repo.save(new Player(31L, "evoN", "TEAM SECRET", 1000, 20, 100, Position.REGULAR));
+				repo.save(new Player(32L, "link", "GRIZI ESPORT", 1000, 20, 100, Position.REGULAR));
 
-				repo.save(new Player(35L, "Spam", "ALLIANCE", 1000, 20, 300, Position.UNDERDOG));
-				repo.save(new Player(36L, "Massa", "BIG", 1000, 20, 300, Position.UNDERDOG));
-				repo.save(new Player(37L, "Kappa", "MCLAREN SHADOW", 1000,20, 300, Position.UNDERDOG));
-				repo.save(new Player(38L, "tween", "ORGLESS", 1000, 20, 300, Position.UNDERDOG));
-				repo.save(new Player(39L, "riolu", "NORDAVIND", 1000, 20, 300, Position.UNDERDOG));
-				repo.save(new Player(40L, "Scrapie", "LAZARUS", 1000, 20, 300, Position.UNDERDOG));
-				repo.save(new Player(41L, "evoN", "TEAM SECRET", 1000, 20, 300, Position.UNDERDOG));
-				repo.save(new Player(42L, "link", "GRIZI ESPORT", 1000, 20, 300, Position.UNDERDOG));
+				repo.save(new Player(33L, "Spam", "ALLIANCE", 1000, 20, 100, Position.UNDERDOG));
+				repo.save(new Player(34L, "Massa", "BIG", 1000, 20, 100, Position.UNDERDOG));
+				repo.save(new Player(35L, "Kappa", "MCLAREN SHADOW", 1000,20, 100, Position.UNDERDOG));
+				repo.save(new Player(36L, "tween", "ORGLESS", 1000, 20, 100, Position.UNDERDOG));
+				repo.save(new Player(37L, "riolu", "NORDAVIND", 1000, 20, 100, Position.UNDERDOG));
+				repo.save(new Player(38L, "Scrapie", "LAZARUS", 1000, 20, 100, Position.UNDERDOG));
+				repo.save(new Player(39L, "evoN", "TEAM SECRET", 1000, 20, 100, Position.UNDERDOG));
+				repo.save(new Player(40L, "link", "GRIZI ESPORT", 1000, 20, 100, Position.UNDERDOG));
 			}
 		};
 	}

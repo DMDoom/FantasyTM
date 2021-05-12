@@ -58,7 +58,6 @@ public class TerminalController {
             teamRepo.save(team);
         }
 
-
         return "redirect:/login";
     }
 
@@ -75,7 +74,7 @@ public class TerminalController {
 
         // Updating regulars based on captains
         int counterForCaptains = 1;
-        for (int i = 17; i <= 33; i++) {
+        for (int i = 17; i <= 32; i++) {
             Player placeholder = form.getPlayers().get(counterForCaptains);
             placeholder.setPosition(Position.REGULAR);
             placeholder.setId((long) i);
@@ -84,10 +83,10 @@ public class TerminalController {
             counterForCaptains++;
         }
 
-        counterForCaptains = 9; // adjusted for underdogs being lower in rankings
+        counterForCaptains = 9; // adjusted for underdogs being lower in rankings, only look at bottom 8 captains
 
         // Updating underdogs based on captains
-        for (int i = 35; i <= 42; i++) {
+        for (int i = 33; i <= 40; i++) {
             Player placeholder = form.getPlayers().get(counterForCaptains);
             placeholder.setPosition(Position.UNDERDOG);
             placeholder.setId((long) i);

@@ -45,31 +45,28 @@ public class ManageController {
 
     @ModelAttribute
     public void loadData(Model model, @AuthenticationPrincipal User user) {
-        // Rankings (wrapper class)
+        // Rankings
         ShowTeamsForm showTeamsForm = new ShowTeamsForm();
         showTeamsForm.getTeams().addAll((Collection<? extends Team>) teamRepo.findAll());
         model.addAttribute("allTeams", showTeamsForm);
 
-        // User players
+        // User team
         Team userTeam = teamRepo.findByUserId(user.getId());
+        model.addAttribute("userTeam", userTeam);
+
+        // User players
         ArrayList<Player> players = new ArrayList<>();
         players.addAll(userTeam.getPlayers());
         model.addAttribute("userPlayers", players);
-
-        // User team
-        model.addAttribute("userTeam", userTeam);
 
         // User wallet
         Wallet userWallet = walletRepo.findByUserId(user.getId());
         model.addAttribute("userWallet", userWallet);
 
-        // For return team, the one it will bind it to
-        model.addAttribute("newTeam", new Team());
-
         // Buff to return
         model.addAttribute("buff", new Buff());
 
-        // Pass a list of available buffs
+        // Available user wallet buffs
         List<Buff> buffs = new ArrayList<>();
         buffRepo.findAll().forEach(buff -> buffs.add(buff));
         model.addAttribute("availableBuffs", buffs);
@@ -98,33 +95,10 @@ public class ManageController {
 
         // Subtract buffs from wallet
         Wallet wallet = walletRepo.findByUserId(user.getId());
+        // Currently only removes if available, need to ensure user can only use buffs they actually have
         wallet.getBuffs().remove(buff); // Evaluates equality only on BuffType, not ID
         walletRepo.save(wallet);
 
         return "redirect:/manage";
     }
-
-    /*
-    When transferring, a newly formed team will be created and returned. It will then overwrite the original team from
-    before the transfer
-    @PostMapping(params = "action=updateAfterTransfer")
-    public String updateAfterTransfer(@Valid @ModelAttribute("team") Team team, @AuthenticationPrincipal User user, Errors errors) {
-        if (errors.hasErrors()) {
-            log.info(errors.getAllErrors().toString());
-        }
-
-        // TEST THIS
-        // Needs to overwrite current player's team
-        teamRepo.save(team);
-
-        return "redirect:/manage";
-    }
-    */
-
-    // Implement token activation here
-    // First will need planning and implementing the feature in other areas!
-    // Tokens will be held in the Wallet
-    // A team will only be allowed one token to be active, so each team can have a token object
-    // Make sure this works with all the other currently implemented features
-
 }
