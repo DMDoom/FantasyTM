@@ -27,6 +27,9 @@ public class Player implements Persistable<Long> {
     private int cost;
     private int age;
 
+    // Change points -> totalPoints
+    // Add recentPoints
+
     @NonNull
     private double points;
 

@@ -54,6 +54,8 @@ public class Team {
 
     // Determine and update total earned points of the team
     // MARKED FOR FIX
+    // Somehow adjust for active buffs
+    // Maybe pass buff type
     public void updatePoints() {
         double sum = 0;
         double helper = 0;
@@ -75,6 +77,39 @@ public class Team {
         }
 
         this.points = sum;
+    }
+
+    // Issues with this:
+
+    // Total player points get taken into account rather than previous step points
+    // Player needs to have a field for recent points, and that's what should be taken into account
+    // Take recent points, perform the below calculations, and then add to totalPoints of the player
+
+    // Underdog should only have their bonus counted at the end of the season only if they reached playoffs
+
+    public void updatePoints(BuffType activeBuff) {
+        double sum = 0;
+        for (Player player : players) {
+            if (player.getPosition() == Position.CAPTAIN) {
+                if (activeBuff == BuffType.TRIPLE_CAPTAIN) {
+                    sum += player.getPoints() * BuffType.TRIPLE_CAPTAIN.getModifier();
+                } else {
+                    sum += player.getPoints() * Position.CAPTAIN.getModifier();
+                }
+            } else if (player.getPosition() == Position.REGULAR) {
+                if (activeBuff == BuffType.FIRE_WEEK) {
+                    sum += player.getPoints() * BuffType.FIRE_WEEK.getModifier();
+                } else {
+                    sum += player.getPoints() * Position.REGULAR.getModifier();
+                }
+            } else if (player.getPosition() == Position.UNDERDOG) {
+                if (activeBuff == BuffType.QUAD_UNDERDOG) {
+                    sum += player.getPoints() * BuffType.QUAD_UNDERDOG.getModifier();
+                } else {
+                    sum += player.getPoints() * Position.UNDERDOG.getModifier();
+                }
+            }
+        }
     }
 
     // Maybe void updatePointsWithUnderdogs() ?

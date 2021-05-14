@@ -24,6 +24,12 @@ public class Buff {
     @Enumerated(EnumType.STRING)
     private BuffType buff;
 
+    String buffName;
+
+    String buffDescription;
+
+    // Maybe needs image? not sure how
+
     public void setBuff(BuffType buff) {
         this.buff = buff;
     }
