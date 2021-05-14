@@ -1536,7 +1536,7 @@ input[type=text] {
   <link href='https://fonts.googleapis.com/css?family=Rubik' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="stylesCreateTeam.css">
 </head>
-
+<div class="image-wrap">
   <div class="header">
     <a href="#default" class="logo">FANTASY TM</a>
     <div class="header-right">
@@ -1545,57 +1545,67 @@ input[type=text] {
       <a href="#about">Login</a>
       <button class="button" disabled>CREATE YOUR TEAM</button>
     </div>
-</div>
+  </div>
+  
+  <div class="playerCards">
+      <div class="playerCard">
+        <h2>CARLJR</h2>
+        <h3>Captain</h3>
+        <div class="img"></div>
+        <h2>360 pts</h2>
+      </div>
+      <div class="playerCard">
+        <h2>TEEN</h2>
+        <h3>Regular</h3>
+        <div class="img"></div>
+        <h2>360 pts</h2>
+      </div>
+      <div class="playerCard">
+        <h2>SPAMMIEJ</h2>
+        <h3>Regular</h3>
+        <div class="img"></div>
+        <h2>360 pts</h2>
+      </div>
+      <div class="playerCard">
+        <h2>KAPPA</h2>
+        <h3>Regular</h3>
+        <div class="img"></div>
+        <h2>360 pts</h2>
+      </div>
+      <div class="playerCard">
+        <h2>MASSA</h2>
+        <h3>Underdog</h3>
+        <div class="img"></div>
+        <h2>360 pts</h2>
+      </div>
+   </div> 
     
 <div class="grid-container">
+  
   <div class="teammanage">
-    <div class="gridHeader">
-      <h1> YOUR TEAM </h1>
+      <div class="gridHeader">
+         <h1> WALLET </h1>
+      </div>
+    
+  <div class="grid-container2">
+    
+    <div class="activeBuffGrid">
+        <div class="card">
+          <h2>TRIPLE CAPTAIN</h2>
+          <h3>Your captain will score 1.5x</h3>
+          <div class="img"></div>
+          <button class="buy-button" style="margin-bottom: 25px;">ACTIVATED</button>
+        </div>
     </div>
-     <table class="playerTable" style="width:100%" cellspacing="0">
-      <thead>
-        <tr>
-            <th scope="col"><p>Player</p></th>
-            <th scope="col"><p>Points</p></th>
-            <th scope="col"><p>Change</p></th>
-            <th scope="col"><p>Action</p></th>
-        </tr>
-      </thead>
-    <tbody>
-       <tr>
-         <td class="name"><p>CarlJr.</p></td>
-         <td class="points"><p>500</p></td>
-         <td class="points"><p>+ 5%</p></td>
-         <td><button class="buy-button">TRANSFER</button></td>
-       </tr>
-         <td class="name"><p>Kappa.</p></td>
-         <td class="points"><p>500</p></td>
-         <td class="points"><p>+ 5%</p></td>
-         <td><button class="buy-button">TRANSFER</button></td>
-        </tr>
-         <td class="name"><p>tween</p></td>
-         <td class="points"><p>500</p></td>
-         <td class="points"><p>+ 5%</p></td>
-         <td><button class="buy-button">TRANSFER</button></td>
-        </tr>
-          <td class="name"><p>Spammiej</p></td>
-          <td class="points"><p>500</p></td>
-          <td class="points"><p>+ 5%</p></td>
-         <td><button class="buy-button">TRANSFER</button></td>
-        </tr>
-         <td class="name"><p>MASSA.</p></td>
-         <td class="points"><p>500</p></td>
-         <td class="points"><p>+ 5%</p></td>
-         <td><button class="buy-button">TRANSFER</button></td>
-        </tr>
-         <td class="name"><p>riolu</p></td>
-         <td class="points"><p>500</p></td>
-         <td class="points"><p>+ 5%</p></td>
-         <td><button class="buy-button">TRANSFER</button></td>
-        </tr>
-      </tbody>
-     </table>
+    
+    <div class="walletInfoGrid">
+        <h2>TEST</h2>
+    </div>
   </div>
+
+    
+    
+ </div>
   
   <div class="tokens">
     <div class="gridHeader">
@@ -1624,12 +1634,33 @@ input[type=text] {
     </div> 
   </div>
   
-  <div class="playerchanges">
-  </div>
   
   <div class="rankings">
-    
+    <div class="playerList">
+      <table class="playerTable" style="width:100%" cellspacing="0">
+       <thead>
+          <tr>
+              <th scope="col"><p>Position</p></th>
+              <th scope="col"><p>Owner</p></th>
+              <th scope="col"><p>Points</p></th>
+              <th scope="col"><p>Team name</p></th>
+              <th scope="col"><p>Active buff</p></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+             <td class="position"><p>1</p></td>
+             <td class="name"><p>Samantha</p></td>
+             <td class="points"><p>859</p></td>
+             <td class="points"><p>Test Team</p></td>
+             <td><button class="buy-button" disabled>QUAD UNDER</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
+
+</div>
 </div>
 ```
 
@@ -1785,7 +1816,7 @@ h1 {
   grid-template-areas:
     "teammanage teammanage tokens tokens"
     "teammanage teammanage tokens tokens"
-    "playerchanges playerchanges rankings rankings";
+    "rankings rankings rankings rankings";
 }
 
 .teammanage {
@@ -1793,7 +1824,9 @@ h1 {
   background-color: var(--white);
   box-shadow: 2px 2px 2px grey;
   border: 1px solid grey;
-  margin: 75px;
+  margin-left: 110px;
+  margin-right: 25px;
+  border-radius: 6px;
 }
 
 .tokens {
@@ -1801,7 +1834,20 @@ h1 {
   background-color: var(--white);
   box-shadow: 2px 2px 2px grey;
   border: 1px solid grey;
-  margin: 75px;
+  margin-right: 110px;
+  margin-left: 25px;
+  border-radius: 6px;
+}
+
+.rankings {
+  grid-area: rankings;
+  background-color: var(--white);
+  box-shadow: 2px 2px 2px grey;
+  border: 1px solid grey;
+  margin-top: 25px;
+  margin-left: 15%;
+  margin-right: 15%;
+  border-radius: 6px;
 }
 
 .gridHeader {
@@ -1811,10 +1857,6 @@ h1 {
   padding-top: 1px;
   padding-bottom: 1px;
 }
-
-.playerchanges { grid-area: playerchanges; }
-
-.rankings { grid-area: rankings; }
 
 td, th {
   margin: 5px;
@@ -1854,7 +1896,7 @@ tr:nth-child(even) {
 }
 
 .buy-button:disabled {
-  background-color: #707070
+  background-color: #909090;
 }
 
 .playerTable {
@@ -1873,6 +1915,36 @@ tr:nth-child(even) {
   flex-direction: column;
   min-height: 350px;
   max-width: 250px;
+  margin-bottom: 0xp;
+  /* TEST BACKGROUND GRADIENT */
+  background: linear-gradient(to right, #bedd88, #cdf3bf);
+  border-radius: 6px;
+}
+
+.playerCards {
+  display:flex;
+  justify-content: center;
+  margin-bottom: 25px;
+  margin-top: 25px;
+  margin-left: 110px;
+  margin-right: 110px;
+}
+
+.playerCard {
+  box-shadow: 2px 2px 2px #b3b3b3;
+  background-color: #cdf3bf;
+  text-align: center;
+  min-height: 350px;
+  max-width: 250px;
+  margin: 10px;
+  padding: 0 0 0 0;
+  display:flex;
+  flex-direction: column;
+  min-height: 350px;
+  max-width: 250px;
+  /* TEST GRADIENT STYLE */
+  background: linear-gradient(to right, #bedd88, #cdf3bf);
+  border-radius: 6px;
 }
 
 .cards {
@@ -1887,7 +1959,7 @@ h2 {
   margin-left: 45px;
   margin-right: 45px;
   margin-bottom: 0px;
-  text-align: left;
+  text-align: center;
   font-family: 'Rubik';
   font-size: 24px;
   color: #232323;
@@ -1910,6 +1982,34 @@ h3 {
   max-width: 200px;
   max-height: 200px;
   margin: 20px;
+}
+
+.playerList {
+  margin: 20px;
+  box-shadow: 2px 2px 2px #b3b3b3;
+}
+
+thead {
+  background-color: #cdf3bf;
+}
+
+.grid-container2 {
+   display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    "activeBuffGrid walletInfoGrid walletInfoGrid walletInfoGrid"
+    "activeBuffGrid walletInfoGrid walletInfoGrid walletInfoGrid"
+    "activeBuffGrid walletInfoGrid walletInfoGrid walletInfoGrid";
+}
+
+.activeBuffGrid {
+  grid-area: activeBuffGrid;
+}
+
+.walletInfoGrid {
+  grid-area: walletInfoGrid;
 }
 
 
