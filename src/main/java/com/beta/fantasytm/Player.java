@@ -29,9 +29,12 @@ public class Player implements Persistable<Long> {
 
     // Change points -> totalPoints
     // Add recentPoints
+    // Make adding up to total points automatic
 
     @NonNull
     private double points;
+
+    private double recentStepPoints;
 
     @Enumerated(EnumType.STRING)
     private Position position;
@@ -39,6 +42,13 @@ public class Player implements Persistable<Long> {
     @Override
     public boolean isNew() {
         return false;
+    }
+
+    // Used to calculate total sum of points based on recent step points entry
+    // Is called when updating from terminal
+    // Untested
+    public void sumUpPoints() {
+        this.points += recentStepPoints;
     }
 }
 

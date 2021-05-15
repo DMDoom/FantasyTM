@@ -45,16 +45,23 @@ public class TerminalController {
         return "terminal";
     }
 
+
+    // Right now only this is functional for recentStepPoints calculations that take into account active buffs
     @PostMapping(params = "action=updateBasedOnAll")
     public String processUpdates(@ModelAttribute("form") UpdateTeamsForm form) {
         // Update players
         for (Player player : form.getPlayers()) {
+            // TEST
+            // Do the same for others
+            // This way only recent step points need to be entered and the total points will be automatically calculated
+            // ENSURE recent points are set to 0 if updating only total points
+            player.sumUpPoints();
             playerRepo.save(player);
         }
 
         // Update all teams based on updated players score
         for (Team team : teamRepo.findAll()) {
-            team.updatePoints();
+            team.updatePoints(team.getActiveBuff());
             teamRepo.save(team);
         }
 

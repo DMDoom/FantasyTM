@@ -85,31 +85,35 @@ public class Team {
     // Player needs to have a field for recent points, and that's what should be taken into account
     // Take recent points, perform the below calculations, and then add to totalPoints of the player
 
-    // Underdog should only have their bonus counted at the end of the season only if they reached playoffs
+    // ALSO, at the end of the season, in the terminal, there needs to be an option to update points of all underdogs
+    // that reached playoffs by 1.5x
 
+    // UNTESTED, TEST
     public void updatePoints(BuffType activeBuff) {
         double sum = 0;
         for (Player player : players) {
             if (player.getPosition() == Position.CAPTAIN) {
                 if (activeBuff == BuffType.TRIPLE_CAPTAIN) {
-                    sum += player.getPoints() * BuffType.TRIPLE_CAPTAIN.getModifier();
+                    sum += player.getRecentStepPoints() * BuffType.TRIPLE_CAPTAIN.getModifier();
                 } else {
-                    sum += player.getPoints() * Position.CAPTAIN.getModifier();
+                    sum += player.getRecentStepPoints() * Position.CAPTAIN.getModifier();
                 }
             } else if (player.getPosition() == Position.REGULAR) {
                 if (activeBuff == BuffType.FIRE_WEEK) {
-                    sum += player.getPoints() * BuffType.FIRE_WEEK.getModifier();
+                    sum += player.getRecentStepPoints() * BuffType.FIRE_WEEK.getModifier();
                 } else {
-                    sum += player.getPoints() * Position.REGULAR.getModifier();
+                    sum += player.getRecentStepPoints() * Position.REGULAR.getModifier();
                 }
             } else if (player.getPosition() == Position.UNDERDOG) {
                 if (activeBuff == BuffType.QUAD_UNDERDOG) {
-                    sum += player.getPoints() * BuffType.QUAD_UNDERDOG.getModifier();
+                    sum += player.getRecentStepPoints() * BuffType.QUAD_UNDERDOG.getModifier();
                 } else {
-                    sum += player.getPoints() * Position.UNDERDOG.getModifier();
+                    sum += player.getRecentStepPoints() * Position.UNDERDOG.getModifier();
                 }
             }
         }
+
+        this.points = sum;
     }
 
     // Maybe void updatePointsWithUnderdogs() ?
