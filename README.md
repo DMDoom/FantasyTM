@@ -2014,3 +2014,168 @@ thead {
 
 
 ```
+
+# Thymeleaf create team page
+```html
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Create Team</title>
+    <link href='https://fonts.googleapis.com/css?family=Rubik' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" th:href="@{/createTeamStyles.css}" />
+    <script type="text/javascript" th:src="@{/createTeamScripts.js}"></script>
+</head>
+
+<body>
+    <div class="image-wrap">
+
+        <div class="header">
+            <a href="#default" class="logo">FANTASY TM</a>
+            <div class="header-right">
+                <a th:href="@{/rankings}">Rankings</a>
+                <a th:href="@{/register}">Register</a>
+                <a th:href="@{/login}">Login</a>
+                <button class="button" disabled>CREATE YOUR TEAM</button>
+            </div>
+        </div>
+
+        <div class="progress-bar-striped" id="testtt">
+            <div style="width: 100%;"><b><p>650 points</p></b></div>
+        </div>
+
+        <div class="grid-container">
+
+            <div class="one">
+                <h1>CAPTAIN</h1>
+                <h2>2x points</h2>
+            </div>
+
+            <div class="two">
+                <h1>REGULAR</h1>
+                <h2>1x points</h2>
+            </div>
+
+            <div class="three"></img>
+                <h1>REGULAR</h1>
+                <h2>1x points</h2>
+            </div>
+
+            <div class="four">
+                <h1>REGULAR</h1>
+                <h2>1x points</h2>
+            </div>
+
+            <div class="five">
+                <h1>UNDERDOG</h1>
+                <h2>2x points in playoffs</h2>
+            </div>
+
+        </div>
+
+        <form method="POST" th:object="${team}">
+            <div class="grid-container" id="grid">
+
+                <div class="one" id="captainsTable" name="column">
+                    <table style="width:100%" cellspacing="0">
+                        <tr th:each="player, playerStat : ${captain}">
+                            <td class="name">
+                                <p th:text="${player.name}">PLAYER</p>
+                            </td>
+                            <td>
+                                <div id="ck-button">
+                                    <label>
+                                        <input class="buyPlayer" type="checkbox" name="players" th:onclick="onlyOne(this, 'captainsTable', [[${playerStat.count}]])" th:id="${playerStat.count}" th:value="${player.id}"/>
+                                        <span th:text="${player.cost}">COST</span>
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="two" id="regularsTable1" name="column">
+                    <table style="width:100%" cellspacing="0">
+                        <tr th:each="player, playerStat : ${regular}">
+                            <td class="name">
+                                <p th:text="${player.name}">PLAYER</p>
+                            </td>
+                            <td>
+                                <div id="ck-button">
+                                    <label>
+                                        <input class="buyPlayer" type="checkbox" name="players" th:onclick="onlyOne(this, 'regularsTable1', [[${playerStat.count}]])" th:id="${playerStat.count}" th:value="${player.id}">
+                                        <span th:text="${player.cost}">COST</span>
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="three" id="regularsTable2" name="column">
+                    <table style="width:100%" cellspacing="0">
+                        <tr th:each="player, playerStat : ${regular}">
+                            <td class="name">
+                                <p th:text="${player.name}">PLAYER</p>
+                            </td>
+                            <td>
+                                <div id="ck-button">
+                                    <label>
+                                        <input class="buyPlayer" type="checkbox" name="players" th:onclick="onlyOne(this, 'regularsTable2', [[${playerStat.count}]])" th:id="${playerStat.count}" th:value="${player.id}">
+                                        <span th:text="${player.cost}">COST</span>
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="four" id="regularsTable3" name="column">
+                    <table style="width:100%" cellspacing="0">
+                        <tr th:each="player, playerStat : ${regular}">
+                            <td class="name">
+                                <p th:text="${player.name}">PLAYER</p>
+                            </td>
+                            <td>
+                                <div id="ck-button">
+                                    <label>
+                                        <input class="buyPlayer" type="checkbox" name="players" th:onclick="onlyOne(this, 'regularsTable3', [[${playerStat.count}]])" th:id="${playerStat.count}" th:value="${player.id}">
+                                        <span th:text="${player.cost}">COST</span>
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="five" id="underdogsTable" name="column">
+                    <table style="width:100%" cellspacing="0">
+                        <tr th:each="player, playerStat : ${underdog}">
+                            <td class="name">
+                                <p th:text="${player.name}">PLAYER</p>
+                            </td>
+                            <td>
+                                <div id="ck-button">
+                                    <label>
+                                        <input class="buyPlayer" type="checkbox" name="players" th:onclick="onlyOne(this, 'underdogsTable', [[${playerStat.count + 8}]])" th:id="${playerStat.count + 8}" th:value="${player.id}">
+                                        <span th:text="${player.cost}">COST</span>
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="submitBox">
+                <div class="teamNameDiv">
+                    <input type="text" name="teamName" th:field="*{name}" placeholder="TEAM NAME"/>
+                </div>
+
+                <button class="buttonSubmit">SUBMIT TEAM</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
+```
