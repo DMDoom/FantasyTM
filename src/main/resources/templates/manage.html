@@ -2,20 +2,166 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Car Cloud</title>
+    <title>Manage Team</title>
+    <link href='https://fonts.googleapis.com/css?family=Rubik' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" th:href="@{/manageStyles.css}" />
 </head>
 <body>
 
-<h1>Register</h1>
-<div th:each="buffWrapper : ${availableBuffs}">
-    <form method="POST" th:action="@{/manage}" th:object="${buff}">
-            <div>
-                <input name="buff"  type="hidden" th:value="${buffWrapper.buff}"/>
-                <span th:text="${buffWrapper.buff}">BUFF</span><br/>
-                <button type="submit" value="Apply buff">Apply buff</button>
+<div class="image-wrap">
+    <div class="header">
+        <a href="#default" class="logo">FANTASY TM</a>
+        <div class="header-right">
+            <a href="#about">Rankings</a>
+            <a href="#contact">Register</a>
+            <a href="#about">Login</a>
+            <button class="button" disabled>CREATE YOUR TEAM</button>
+        </div>
+    </div>
+
+    <!-- NEEDS TO BE PULLED FROM DATABASE -->
+    <div class="playerCards">
+        <div class="playerCard">
+            <h2>CARLJR</h2>
+            <h3>Captain</h3>
+            <div class="img"></div>
+            <h2>360 pts</h2>
+        </div>
+        <div class="playerCard">
+            <h2>TEEN</h2>
+            <h3>Regular</h3>
+            <div class="img"></div>
+            <h2>360 pts</h2>
+        </div>
+        <div class="playerCard">
+            <h2>SPAMMIEJ</h2>
+            <h3>Regular</h3>
+            <div class="img"></div>
+            <h2>360 pts</h2>
+        </div>
+        <div class="playerCard">
+            <h2>KAPPA</h2>
+            <h3>Regular</h3>
+            <div class="img"></div>
+            <h2>360 pts</h2>
+        </div>
+        <div class="playerCard">
+            <h2>MASSA</h2>
+            <h3>Underdog</h3>
+            <div class="img"></div>
+            <h2>360 pts</h2>
+        </div>
+    </div>
+
+    <!-- WIP ON MAKING THIS FULLY FUNCTIONAL -->
+    <div class="grid-container">
+
+        <div class="teammanage">
+            <div class="gridHeader">
+                <h1> WALLET </h1>
             </div>
-    </form>
+
+            <div class="grid-container2">
+
+                <div class="activeBuffGrid">
+                    <div class="card">
+                        <h2>TRIPLE CAPTAIN</h2>
+                        <h3>Your captain will score 1.5x</h3>
+                        <div class="img"></div>
+                        <button class="buy-button" style="margin-bottom: 25px;" disabled>ACTIVATED</button>
+                    </div>
+                </div>
+
+                <!-- WALLET AND TEAM INFORMATION, NEEDS TO BE PULLED FROM THE DATABASE -->
+                <div class="walletInfoGrid">
+                    <div class="playerList">
+                        <table class="playerTable" style="width:100%" cellspacing="0">
+                            <thead>
+                            <tr>
+                                <th scope="col"><p></p></th>
+                                <th scope="col"><p></p></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td class="position"><p>Owner</p></td>
+                                <td class="name"><p>Samantha</p></td>
+                            </tr>
+                            <tr>
+                                <td class="position"><p>Team rank</p></td>
+                                <td class="name"><p>2</p></td>
+                            </tr>
+                            <tr>
+                                <td class="position"><p>Points earned</p></td>
+                                <td class="name"><p>738</p></td>
+                            </tr>
+                            <tr>
+                                <td class="position"><p>Total team cost</p></td>
+                                <td class="name"><p>623</p></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BUFF ACTIVATION -->
+        <div class="tokens">
+            <div class="gridHeader">
+                <h1>BUFFS</h1>
+            </div>
+
+            <div class="cards">
+                    <div class="card" th:each="buffWrapper : ${availableBuffs}">
+                        <form method="POST" th:action="@{/manage}" th:object="${buff}">
+                            <h2 th:text="${buffWrapper.buffName}">BUFF NAME</h2>
+                            <h3 th:text="${buffWrapper.buffDescription}">Buff description</h3>
+                            <div class="img"></div>
+                            <input name="buff"  type="hidden" th:value="${buffWrapper.buff}"/>
+                            <button class="buy-button" style="margin-bottom: 25px;" type="submit" value="ACTIVATE">ACTIVATE</button>
+                        </form>
+                    </div>
+            </div>
+
+        </div>
+
+        <!-- RANKINGS ZONE, NEEDS TO BE PULLED FROM THE DATABASE -->
+        <div class="rankings">
+            <div class="playerList">
+                <table class="playerTable" style="width:100%" cellspacing="0">
+                    <thead>
+                    <tr>
+                        <th scope="col"><p>Position</p></th>
+                        <th scope="col"><p>Owner</p></th>
+                        <th scope="col"><p>Points</p></th>
+                        <th scope="col"><p>Team name</p></th>
+                        <th scope="col"><p>Active buff</p></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="position"><p>1</p></td>
+                        <td class="name"><p>Samantha</p></td>
+                        <td class="points"><p>859</p></td>
+                        <td class="points"><p>Test Team</p></td>
+                        <td><button class="buy-button" disabled>QUAD UNDER</button></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
 </div>
+
+
+
+
+
+
+
+
 
 </body>
 </html>

@@ -18,88 +18,88 @@ function onlyOne(checkbox, tableName, id) {
     // On checkbox checked
     if (checkbox.checked) {
 
-      // Subtract points from balance
-      toUpdatePercent = currBalancePercent - playerValuePercent;
-      toUpdatePoints = currBalancePoints - playerValuePoints;
-      change(toUpdatePercent, toUpdatePoints);
+        // Subtract points from balance
+        toUpdatePercent = currBalancePercent - playerValuePercent;
+        toUpdatePoints = currBalancePoints - playerValuePoints;
+        change(toUpdatePercent, toUpdatePoints);
 
-      // Disable all players in a column
-      checkboxes.forEach((item) => {
-        if (item !== checkbox) {
-          item.checked = false
-          item.disabled = true
-        }
-      })
+        // Disable all players in a column
+        checkboxes.forEach((item) => {
+            if (item !== checkbox) {
+              item.checked = false
+              item.disabled = true
+            }
+        })
 
-      // Disable the same player in all columns
-      players.forEach((player) => {
-        if (player.id == id && player !== checkbox) {
-        player.disabled = true;
-        }
-      })
+        // Disable the same player in all columns
+        players.forEach((player) => {
+            if (player.id == id && player !== checkbox) {
+            player.disabled = true;
+            }
+        })
 
-      // Disable all players too expensive
-      currBalancePoints = toUpdatePoints;
-      players.forEach((player) => {
-        var playerValue = player.parentNode.getElementsByTagName("span")[0].innerHTML;
-        if (playerValue > currBalancePoints && player !== checkbox && !player.checked) {
-          player.disabled = true;
-        }
-      })
+        // Disable all players too expensive
+        currBalancePoints = toUpdatePoints;
+        players.forEach((player) => {
+            var playerValue = player.parentNode.getElementsByTagName("span")[0].innerHTML;
+            if (playerValue > currBalancePoints && player !== checkbox && !player.checked) {
+            player.disabled = true;
+            }
+        })
 
     // On checkbox unchecked
     } else {
 
-      // Restore points to balance
-      toUpdatePercent = +currBalancePercent + +playerValuePercent;
-      toUpdatePoints = +currBalancePoints + +playerValuePoints;
-      change(toUpdatePercent, toUpdatePoints);
-      var selectedPlayers = gatherSelected();
+        // Restore points to balance
+        toUpdatePercent = +currBalancePercent + +playerValuePercent;
+        toUpdatePoints = +currBalancePoints + +playerValuePoints;
+        change(toUpdatePercent, toUpdatePoints);
+        var selectedPlayers = gatherSelected();
 
-      // Enable all possible players back on
-      var currBalancePoints = toUpdatePoints;
-      players.forEach((player) => {
-        var playerValue = player.parentNode.getElementsByTagName("span")[0].innerHTML;
-        // If there is absolutely no reason this checkbox should be disabled, enable it
-        if (!selectedPlayers.includes(player.id)
-            && !isSomethingChecked(player.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode)
-            && playerValue < currBalancePoints) {
-           player.disabled = false;
-        }
-      })
+        // Enable all possible players back on
+        var currBalancePoints = toUpdatePoints;
+        players.forEach((player) => {
+            var playerValue = player.parentNode.getElementsByTagName("span")[0].innerHTML;
+            // If there is absolutely no reason this checkbox should be disabled, enable it
+            if (!selectedPlayers.includes(player.id)
+                && !isSomethingChecked(player.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode)
+                && playerValue < currBalancePoints) {
+            player.disabled = false;
+            }
+        })
     }
 }
 
 // Returns a list of IDs of all selected players
 function gatherSelected() {
-  var players = document.querySelectorAll(".buyPlayer");
-  var takenPlayers = [];
+    var players = document.querySelectorAll(".buyPlayer");
+    var takenPlayers = [];
 
-  players.forEach((player) => {
-    if (player.checked) {
-      takenPlayers.push(player.id);
-    }
-  })
+    players.forEach((player) => {
+        if (player.checked) {
+        takenPlayers.push(player.id);
+        }
+    })
 
-  return takenPlayers;
+    return takenPlayers;
 }
 
 // Checks if any player is selected in the passed column
 function isSomethingChecked(column) {
-  var playersInColumn = column.querySelectorAll(".buyPlayer");
+    var playersInColumn = column.querySelectorAll(".buyPlayer");
 
-  var counter = 0;
-  playersInColumn.forEach((player) => {
-     if (player.checked) {
-        counter++;
-     }
-  })
+    var counter = 0;
+    playersInColumn.forEach((player) => {
+        if (player.checked) {
+            counter++;
+        }
+    })
 
-  if (counter == 0) {
-    return false;
-  } else {
-    return true;
-  }
+    if (counter == 0) {
+        return false;
+    } else {
+        return true;
+    }
 }
 
 // Change the balance bar to represent specified values

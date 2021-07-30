@@ -68,7 +68,8 @@ public class ManageController {
 
         // Available user wallet buffs
         List<Buff> buffs = new ArrayList<>();
-        buffRepo.findAll().forEach(buff -> buffs.add(buff));
+        buffs.addAll(userWallet.getBuffs());
+        buffs.remove(0); // removing NULL buff
         model.addAttribute("availableBuffs", buffs);
     }
 
