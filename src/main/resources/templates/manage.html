@@ -22,34 +22,34 @@
     <!-- NEEDS TO BE PULLED FROM DATABASE -->
     <div class="playerCards">
         <div class="playerCard">
-            <h2>CARLJR</h2>
+            <h2 th:text="${userTeam.players[0].name}">CARLJR</h2>
             <h3>Captain</h3>
             <div class="img"></div>
-            <h2>360 pts</h2>
+            <h2 th:text="${userTeam.players[0].points}">360 pts</h2>
         </div>
         <div class="playerCard">
-            <h2>TEEN</h2>
+            <h2 th:text="${userTeam.players[1].name}">TEEN</h2>
             <h3>Regular</h3>
             <div class="img"></div>
-            <h2>360 pts</h2>
+            <h2 th:text="${userTeam.players[1].points}">360 pts</h2>
         </div>
         <div class="playerCard">
-            <h2>SPAMMIEJ</h2>
+            <h2 th:text="${userTeam.players[2].name}">SPAMMIEJ</h2>
             <h3>Regular</h3>
             <div class="img"></div>
-            <h2>360 pts</h2>
+            <h2 th:text="${userTeam.players[2].points}">360 pts</h2>
         </div>
         <div class="playerCard">
-            <h2>KAPPA</h2>
+            <h2 th:text="${userTeam.players[3].name}">KAPPA</h2>
             <h3>Regular</h3>
             <div class="img"></div>
-            <h2>360 pts</h2>
+            <h2 th:text="${userTeam.players[3].points}">360 pts</h2>
         </div>
         <div class="playerCard">
-            <h2>MASSA</h2>
+            <h2 th:text="${userTeam.players[4].name}">MASSA</h2>
             <h3>Underdog</h3>
             <div class="img"></div>
-            <h2>360 pts</h2>
+            <h2 th:text="${userTeam.players[4].points}">360 pts</h2>
         </div>
     </div>
 
@@ -85,19 +85,20 @@
                             <tbody>
                             <tr>
                                 <td class="position"><p>Owner</p></td>
-                                <td class="name"><p>Samantha</p></td>
+                                <td class="name"><p th:text="${userInformation.username}">Samantha</p></td>
                             </tr>
                             <tr>
+                                <!-- IMPLEMENT FUNCTIONAL TEAM RANKINGS -->
                                 <td class="position"><p>Team rank</p></td>
                                 <td class="name"><p>2</p></td>
                             </tr>
                             <tr>
                                 <td class="position"><p>Points earned</p></td>
-                                <td class="name"><p>738</p></td>
+                                <td class="name"><p th:text="${userTeam.points}">738</p></td>
                             </tr>
                             <tr>
                                 <td class="position"><p>Total team cost</p></td>
-                                <td class="name"><p>623</p></td>
+                                <td class="name"><p th:text="${userTeam.cost}">623</p></td>
                             </tr>
                             </tbody>
                         </table>
@@ -154,13 +155,6 @@
 
     </div>
 </div>
-
-
-
-
-
-
-
 
 
 </body>

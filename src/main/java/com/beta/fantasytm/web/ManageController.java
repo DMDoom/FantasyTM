@@ -63,6 +63,9 @@ public class ManageController {
         Wallet userWallet = walletRepo.findByUserId(user.getId());
         model.addAttribute("userWallet", userWallet);
 
+        // User
+        model.addAttribute("userInformation", user);
+
         // Buff to return
         model.addAttribute("buff", new Buff());
 
