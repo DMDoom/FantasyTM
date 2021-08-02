@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Fantasy TM</title>
+    <link href='https://fonts.googleapis.com/css?family=Rubik' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" th:href="@{/homeStyles.css}" />
+</head>
+<body>
+
+<div class="header">
+
+    <a href="#default" class="logo">FANTASY TM</a>
+
+    <div class="header-right">
+        <a th:href="@{/rankings}">Rankings</a>
+        <a th:href="@{/register}">Register</a>
+        <a th:href="@{/login}">Login</a>
+        <button class="button" th:onclick="window.location.href = '/create'">CREATE YOUR TEAM</button>
+    </div>
+
+</div>
+
+
+<div class="bg-video-wrap">
+    <video autoplay muted loop id="myVideo">
+        <source type="video/mp4" th:src="@{/backgroundVideo.mp4}">
+    </video>
+    <div class="overlay">
+    </div>
+    <h1>Welcome to FantasyTM</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+        et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+        aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+        culpa qui officia deserunt mollit anim id est laborum.</p>
+    <button class="button2" th:onclick="window.location.href = '/create'">CREATE YOUR TEAM</button>
+</div>
+
+</body>
+</html>
