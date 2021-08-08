@@ -1551,32 +1551,32 @@ input[type=text] {
       <div class="playerCard">
         <h2>CARLJR</h2>
         <h3>Captain</h3>
-        <div class="img"></div>
-        <h2>360 pts</h2>
+        <img src="https://i.ibb.co/BcTFR9h/captain-FIN.png"></img>
+        <h2 style="margin-bottom: 20px;">360 pts</h2>
       </div>
       <div class="playerCard">
         <h2>TEEN</h2>
         <h3>Regular</h3>
-        <div class="img"></div>
-        <h2>360 pts</h2>
+        <img src="https://i.ibb.co/PcFp6CN/regular-FIN.png"></img>
+        <h2 style="margin-bottom: 20px;">360 pts</h2>
       </div>
       <div class="playerCard">
         <h2>SPAMMIEJ</h2>
         <h3>Regular</h3>
-        <div class="img"></div>
-        <h2>360 pts</h2>
+        <img src="https://i.ibb.co/PcFp6CN/regular-FIN.png"></img>
+        <h2 style="margin-bottom: 20px;">360 pts</h2>
       </div>
       <div class="playerCard">
         <h2>KAPPA</h2>
         <h3>Regular</h3>
-        <div class="img"></div>
-        <h2>360 pts</h2>
+        <img src="https://i.ibb.co/PcFp6CN/regular-FIN.png"></img>
+        <h2 style="margin-bottom: 20px;">360 pts</h2>
       </div>
       <div class="playerCard">
         <h2>MASSA</h2>
         <h3>Underdog</h3>
-        <div class="img"></div>
-        <h2>360 pts</h2>
+        <img src="https://i.ibb.co/vqvJ55b/underdog-FIN.png"></img>
+        <h2 style="margin-bottom: 20px;">360 pts</h2>
       </div>
    </div> 
     
@@ -1587,25 +1587,54 @@ input[type=text] {
          <h1> WALLET </h1>
       </div>
     
-  <div class="grid-container2">
-    
-    <div class="activeBuffGrid">
-        <div class="card">
-          <h2>TRIPLE CAPTAIN</h2>
-          <h3>Your captain will score 1.5x</h3>
-          <div class="img"></div>
-          <button class="buy-button" style="margin-bottom: 25px;">ACTIVATED</button>
+      <div class="grid-container2">
+
+        <div class="activeBuffGrid">
+            <div class="card">
+              <h2>TRIPLE CAPTAIN</h2>
+              <h3>Your captain will score 1.5x</h3>
+              <div class="img"></div>
+              <button class="buy-button" style="margin-bottom: 25px;" disabled>ACTIVATED</button>
+            </div>
+        </div>
+
+        <div class="walletInfoGrid">
+                <div class="playerList">
+                  <table class="playerTable" style="width:100%" cellspacing="0">
+                   <thead>
+                      <tr>
+                          <th scope="col"><p></p></th>
+                          <th scope="col"><p></p></th>
+                          <th scope="col"><p></p></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                         <td class="icon"><img src="https://image.flaticon.com/icons/png/32/126/126486.png"></img></td>
+                         <td class="firstItem"><p>Owner</p></td>
+                         <td class="secondItem"><p>Samantha</p></td>
+                      </tr>
+                      <tr>
+                         <td class="icon"><img src="https://image.flaticon.com/icons/png/32/4633/4633349.png"></img></td>
+                         <td class="firstItem"><p>Team rank</p></td>
+                         <td class="secondItem"><p>2</p></td>
+                      </tr>
+                      <tr>
+                        <td class="icon"><img src="https://image.flaticon.com/icons/png/32/4425/4425776.png"></img></td>
+                         <td class="firstItem"><p>Points earned</p></td>
+                         <td class="secondItem"><p>738</p></td>
+                      </tr>
+                      <tr>
+                        <td class="icon"><img src="https://image.flaticon.com/icons/png/32/4538/4538747.png"></img></td>
+                         <td class="firstItem"><p>Total team cost</p></td>
+                         <td class="secondItem"><p>623</p></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
         </div>
     </div>
-    
-    <div class="walletInfoGrid">
-        <h2>TEST</h2>
-    </div>
   </div>
-
-    
-    
- </div>
   
   <div class="tokens">
     <div class="gridHeader">
@@ -1640,11 +1669,11 @@ input[type=text] {
       <table class="playerTable" style="width:100%" cellspacing="0">
        <thead>
           <tr>
-              <th scope="col"><p>Position</p></th>
-              <th scope="col"><p>Owner</p></th>
-              <th scope="col"><p>Points</p></th>
-              <th scope="col"><p>Team name</p></th>
-              <th scope="col"><p>Active buff</p></th>
+              <th scope="col"><p style="color: #f4f0ec">Position</p></th>
+              <th scope="col"><p style="color: #f4f0ec">Owner</p></th>
+              <th scope="col"><p style="color: #f4f0ec">Points</p></th>
+              <th scope="col"><p style="color: #f4f0ec">Team name</p></th>
+              <th scope="col"><p style="color: #f4f0ec">Active buff</p></th>
           </tr>
         </thead>
         <tbody>
@@ -1653,7 +1682,7 @@ input[type=text] {
              <td class="name"><p>Samantha</p></td>
              <td class="points"><p>859</p></td>
              <td class="points"><p>Test Team</p></td>
-             <td><button class="buy-button" disabled>QUAD UNDER</button></td>
+             <td><button class="buy-button" style="margin-top:5px;" disabled>QUAD UNDER</button></td>
           </tr>
         </tbody>
       </table>
@@ -1667,12 +1696,28 @@ input[type=text] {
 # CSS manage page
 ```css
 :root {
-  --white: #efefef;
+  --siteBackground: #f4f0ec;
+  --siteGreen: #30b530; /* N: #2a9d2a */ /*#30b530*/
+  --tablesHead: #30b530;
+  
+  --playerGradientStart: #f0f4ec; /*N: #f2f5f2*/
+  --playerGradientEnd: #d9e0d9; /*N: #d9e0d9*/
+  
+  --buffGradientStart: #f0f4ec;
+  --buffGradientEnd: #d9e0d9;
+  
+  --buttonBackground: #30b530;
+  --buttonHover: #faf0e6;
+  --buttonDisabled: #808080;
+  
+  --mainText: #006600; /*#006600*/
+  --subText: #1B1B1B;
+  --sectionText: #003300;
 }
 
 body {
   background-color: #80FF80;
-  background-image: url(https://www.gamegrin.com/assets/game/trackmania-2020/screenshots/_resampled/SetWidth1920-trackmania-2020-screenshots-11.jpg);
+  background-image: url(https://www.gamegrin.com/assets/game/trackmania-2020/screenshots/_resampled/SetWidth1920-trackmania-2020-screenshots-2.jpg);
   background-repeat: no-repeat;
   background-attachment: fixed;
   margin:0;
@@ -1680,15 +1725,14 @@ body {
 
 .image-wrap{
     background: rgba(248, 248, 255, 0.3);
-    overflow: hidden; /* needs scroll for local version */
+    overflow: scroll; /* needs scroll for local version */
     height: 100%;
-    z-index: 2;
 }
 
 /* Style the header with a grey background and some padding */
 .header {
   overflow: hidden;
-  background-color: #fafafa;
+  background-color: var(--siteBackground);
   padding: 20px 100px;
   box-shadow: 2px 2px 2px #b3b3b3;
 }
@@ -1732,7 +1776,7 @@ body {
 .button {
   position: relative;
   margin-left: 20px;
-  background-color: #6edc45;
+  background-color: var(--buttonBackground);
   border: none;
   font-size: 18px;
   font-weight: bold;
@@ -1761,23 +1805,23 @@ body {
   margin-left: -20px!important;
   margin-top: -120%;
   opacity: 0;
-  transition: all 0.8s
+  transition: all 0.8s;
 }
 
 .button:active:after {
   padding: 0;
   margin: 0;
   opacity: 1;
-  transition: 0s
+  transition: 0s;
 }
 
 .button:hover {
-  background-color: #4CAF50; /* Green */
+  background-color: var(--buttonHover); /* Green */
   color: white;
 }
 
 .button:disabled {
-  background-color: #909090;
+  background-color: var(--buttonDisabled);
   color:#fff; 
 }
 
@@ -1796,7 +1840,7 @@ body {
 p {
   font-family: 'Rubik';
   font-size: 17px;
-  color: #232323;
+  color: var(--subText);
   font-weight: bold;
   /*padding-left: 47%;*/
 }
@@ -1804,9 +1848,10 @@ p {
 h1 {
   text-align: center;
   font-family: 'Rubik';
-  font-size: 30px;
-  color: #FFFFFF;
+  font-size: 35px;
+  color: #f4f0ec;
   font-weight: bold;
+  letter-spacing: 3px;
 }
 
 .grid-container {
@@ -1821,7 +1866,7 @@ h1 {
 
 .teammanage {
   grid-area: teammanage;
-  background-color: var(--white);
+  background-color: var(--siteBackground);
   box-shadow: 2px 2px 2px grey;
   border: 1px solid grey;
   margin-left: 110px;
@@ -1831,7 +1876,7 @@ h1 {
 
 .tokens {
   grid-area: tokens;
-  background-color: var(--white);
+  background-color: var(--siteBackground);
   box-shadow: 2px 2px 2px grey;
   border: 1px solid grey;
   margin-right: 110px;
@@ -1841,26 +1886,27 @@ h1 {
 
 .rankings {
   grid-area: rankings;
-  background-color: var(--white);
+  background-color: var(--siteBackground);
   box-shadow: 2px 2px 2px grey;
   border: 1px solid grey;
   margin-top: 25px;
-  margin-left: 15%;
-  margin-right: 15%;
+  margin-left: 110px;
+  margin-right: 110px;
   border-radius: 6px;
 }
 
 .gridHeader {
-  background-color: #6edc45;
-  margin-top: 15px;
+  background-color: var(--siteGreen);
+  /*margin-top: 15px;*/
+  border-radius: 6px;
+  margin-top: 0px;
   margin-bottom: 15px;
   padding-top: 1px;
-  padding-bottom: 1px;
+  padding-bottom: 1px
 }
 
 td, th {
   margin: 5px;
-  border-spacing:5em;
   text-align: center;
 }
 
@@ -1872,9 +1918,9 @@ tr:nth-child(even) {
 .buy-button {
   margin-right: 20px;
   margin-left: 20px;
-  margin-top:5px;
+  margin-top:25px;
   margin-bottom: 5px;
-  background-color: #6edc45;
+  background-color: var(--buttonBackground);
   border: none;
   font-size: 17px;
   font-weight: bold;
@@ -1890,21 +1936,21 @@ tr:nth-child(even) {
   transition-duration: 0.4s;
 }
 
-.buy-button:hover {
-  background-color: #4CAF50; /* Green */
-  color: white;
+.buy-button:hover:enabled {
+  background-color: var(--buttonHover); /* Green */
+  color: var(--mainText);
+  box-shadow: 0 0 0 1px black;
 }
 
 .buy-button:disabled {
-  background-color: #909090;
+  background-color: var(--buttonDisabled);
 }
 
 .playerTable {
-  table-layout: fixed;
+  table-layout: auto;
 }
 
 .card {
-  box-shadow: 2px 2px 2px #b3b3b3;
   background-color: #cdf3bf;
   text-align: center;
   min-height: 350px;
@@ -1917,8 +1963,15 @@ tr:nth-child(even) {
   max-width: 250px;
   margin-bottom: 0xp;
   /* TEST BACKGROUND GRADIENT */
-  background: linear-gradient(to right, #bedd88, #cdf3bf);
+  background: linear-gradient(var(--buffGradientStart), var(--buffGradientEnd));
   border-radius: 6px;
+  
+  /* EXPERIMENTAL */
+  position: relative;
+  z-index: 3;
+  transition: transform .2s;
+  /*box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;*/
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
 }
 
 .playerCards {
@@ -1931,38 +1984,37 @@ tr:nth-child(even) {
 }
 
 .playerCard {
-  box-shadow: 2px 2px 2px #b3b3b3;
-  background-color: #cdf3bf;
+  box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+  background-color: #6edc45;
   text-align: center;
-  min-height: 350px;
-  max-width: 250px;
   margin: 10px;
   padding: 0 0 0 0;
-  display:flex;
+  display: flex;
   flex-direction: column;
-  min-height: 350px;
-  max-width: 250px;
   /* TEST GRADIENT STYLE */
-  background: linear-gradient(to right, #bedd88, #cdf3bf);
-  border-radius: 6px;
+  background: linear-gradient(to right, var(--playerGradientStart), var(--playerGradientEnd));
+  border-radius: 6px; 
+  min-width: 180px;
 }
 
 .cards {
   display:flex;
   justify-content: space-evenly;
   margin-bottom: 25px;
+  position: relative;
+  z-index: 1;
 }
 
 h2 {
   float: left;
   margin-top: 25px;
-  margin-left: 45px;
-  margin-right: 45px;
+  margin-left: 0px;
+  margin-right: 0px;
   margin-bottom: 0px;
   text-align: center;
   font-family: 'Rubik';
   font-size: 24px;
-  color: #232323;
+  color: var(--mainText);
   font-weight: bold;
 }
 
@@ -1971,7 +2023,7 @@ h3 {
   text-align: left;
   font-family: 'Rubik';
   font-size: 14px;
-  color: grey;
+  color: var(--subText);
   text-align: center;
 }
 
@@ -1981,16 +2033,20 @@ h3 {
   min-height: 200px;
   max-width: 200px;
   max-height: 200px;
-  margin: 20px;
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 0px;
 }
 
 .playerList {
   margin: 20px;
-  box-shadow: 2px 2px 2px #b3b3b3;
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+  border-radius: 6px;
 }
 
 thead {
-  background-color: #cdf3bf;
+  background-color: var(--tablesHead);
 }
 
 .grid-container2 {
@@ -2012,6 +2068,116 @@ thead {
   grid-area: walletInfoGrid;
 }
 
+.card:hover {
+  transform: scale(1.05);
+}
+
+.firstItem {
+  text-align: left;
+  padding-left: 30px;
+}
+
+.icon {
+  text-align: center;
+}
+
+/*
+.card:hover::before, .card:hover::after {
+  display: block;
+  content: '';
+  position: absolute;
+  width: 250px; 
+  height: 430px; 
+  background: #99ff99;
+  border-radius: 6px;
+  z-index: -3;
+  animation: 1s clockwise infinite;
+}
+
+.card:hover:after {
+  background: #3bb300;
+  animation: 2s counterclockwise infinite;
+  z-index: -3;
+}
+
+@keyframes clockwise {
+  0% {
+    top: -5px;
+    left: 0;
+  }
+  12% {
+    top: -2px;
+    left: 2px;
+  }
+  25% {
+    top: 0;
+    left: 5px;    
+  }
+  37% {
+    top: 2px;
+    left: 2px;
+  }
+  50% {
+    top: 5px;
+    left: 0;    
+  }
+  62% {
+    top: 2px;
+    left: -2px;
+  }
+  75% {
+    top: 0;
+    left: -5px;
+  }
+  87% {
+    top: -2px;
+    left: -2px;
+  }
+  100% {
+    top: -5px;
+    left: 0;    
+  }
+}
+
+@keyframes counterclockwise {
+  0% {
+    top: -5px;
+    right: 0;
+  }
+  12% {
+    top: -2px;
+    right: 2px;
+  }
+  25% {
+    top: 0;
+    right: 5px;    
+  }
+  37% {
+    top: 2px;
+    right: 2px;
+  }
+  50% {
+    top: 5px;
+    right: 0;    
+  }
+  62% {
+    top: 2px;
+    right: -2px;
+  }
+  75% {
+    top: 0;
+    right: -5px;
+  }
+  87% {
+    top: -2px;
+    right: -2px;
+  }
+  100% {
+    top: -5px;
+    right: 0;    
+  }
+}
+*/
 
 ```
 
