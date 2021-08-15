@@ -45,7 +45,7 @@ public class FantasytmApplication {
 				*/
 
 				// Buff save
-				buffRepo.save(new Buff(1L, BuffType.NULL, "NO BUFF", "No modifier"));
+				buffRepo.save(new Buff(1L, BuffType.NULL, "NONE ACTIVE", "No buff is active"));
 				buffRepo.save(new Buff(2L, BuffType.FIRE_WEEK, "FIRE WEEK", "Regular players all score 1.5x"));
 				buffRepo.save(new Buff(3L, BuffType.TRIPLE_CAPTAIN, "TRIP CAPTAIN", "Your captain will score 1.5x"));
 				buffRepo.save(new Buff(4L, BuffType.QUAD_UNDERDOG, "QUAD UNDER", "Your underdog will score 4x"));

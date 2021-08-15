@@ -19,37 +19,13 @@
         </div>
     </div>
 
-    <!-- NEEDS TO BE PULLED FROM DATABASE -->
+    <!-- TEAM LINEUP -->
     <div class="playerCards">
-        <div class="playerCard">
-            <h2 th:text="${userTeam.players[0].name}">CARLJR</h2>
-            <h3>Captain</h3>
-            <div class="img"></div>
-            <h2 th:text="${userTeam.players[0].points}">360 pts</h2>
-        </div>
-        <div class="playerCard">
-            <h2 th:text="${userTeam.players[1].name}">TEEN</h2>
-            <h3>Regular</h3>
-            <div class="img"></div>
-            <h2 th:text="${userTeam.players[1].points}">360 pts</h2>
-        </div>
-        <div class="playerCard">
-            <h2 th:text="${userTeam.players[2].name}">SPAMMIEJ</h2>
-            <h3>Regular</h3>
-            <div class="img"></div>
-            <h2 th:text="${userTeam.players[2].points}">360 pts</h2>
-        </div>
-        <div class="playerCard">
-            <h2 th:text="${userTeam.players[3].name}">KAPPA</h2>
-            <h3>Regular</h3>
-            <div class="img"></div>
-            <h2 th:text="${userTeam.players[3].points}">360 pts</h2>
-        </div>
-        <div class="playerCard">
-            <h2 th:text="${userTeam.players[4].name}">MASSA</h2>
-            <h3>Underdog</h3>
-            <div class="img"></div>
-            <h2 th:text="${userTeam.players[4].points}">360 pts</h2>
+        <div class="playerCard" th:each="player : ${userPlayers}">
+            <h2 th:text="${player.name}">PLAYER NAME</h2>
+            <h3 th:text="${player.position}">ROLE</h3>
+            <img th:src="@{/graphics/{image}(image=${player.position.banner})}">
+            <h2 th:text="${player.points}" style="margin-bottom: 20px;">POINTS</h2>
         </div>
     </div>
 
@@ -77,29 +53,39 @@
                     <div class="playerList">
                         <table class="playerTable" style="width:100%" cellspacing="0">
                             <thead>
-                            <tr>
-                                <th scope="col"><p></p></th>
-                                <th scope="col"><p></p></th>
-                            </tr>
+                                <tr>
+                                    <th scope="col"><p></p></th>
+                                    <th scope="col"><p></p></th>
+                                    <th scope="col"><p></p></th>
+                                </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td class="position"><p>Owner</p></td>
-                                <td class="name"><p th:text="${userInformation.username}">Samantha</p></td>
-                            </tr>
-                            <tr>
-                                <!-- IMPLEMENT FUNCTIONAL TEAM RANKINGS -->
-                                <td class="position"><p>Team rank</p></td>
-                                <td class="name"><p>2</p></td>
-                            </tr>
-                            <tr>
-                                <td class="position"><p>Points earned</p></td>
-                                <td class="name"><p th:text="${userTeam.points}">738</p></td>
-                            </tr>
-                            <tr>
-                                <td class="position"><p>Total team cost</p></td>
-                                <td class="name"><p th:text="${userTeam.cost}">623</p></td>
-                            </tr>
+                                <tr>
+                                    <td class="icon"><img th:src="@{/graphics/iconOwner.png}"></img></td>
+                                    <td class="firstItem"><p>Owner</p></td>
+                                    <td class="secondItem"><p th:text="${userInformation.username}">OWNER</p></td>
+                                </tr>
+                                <tr>
+                                    <td class="icon"><img th:src="@{/graphics/iconTeamName.png}"></img></td>
+                                    <td class="firstItem"><p>Team name</p></td>
+                                    <td class="secondItem"><p th:text="${userTeam.name}">TEAM NAME</p></td>
+                                </tr>
+                                <tr>
+                                    <!-- IMPLEMENT FUNCTIONAL TEAM RANKINGS -->
+                                    <td class="icon"><img th:src="@{/graphics/iconRank.png}"></img></td>
+                                    <td class="firstItem"><p>Team rank</p></td>
+                                    <td class="secondItem"><p>3</p></td>
+                                </tr>
+                                <tr>
+                                    <td class="icon"><img th:src="@{/graphics/iconPoints.png}"></img></td>
+                                    <td class="firstItem"><p>Points earned</p></td>
+                                    <td class="secondItem"><p th:text="${userTeam.points}">POINTS EARNED</p></td>
+                                </tr>
+                                <tr>
+                                    <td class="icon"><img th:src="@{/graphics/iconTeamCost.png}"></img></td>
+                                    <td class="firstItem"><p>Total team cost</p></td>
+                                    <td class="secondItem"><p th:text="${userTeam.cost}">TOTAL TEAM COST</p></td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -117,8 +103,8 @@
                     <div class="card" th:each="buffWrapper : ${availableBuffs}">
                         <form method="POST" th:action="@{/manage}" th:object="${buff}">
                             <h2 th:text="${buffWrapper.buffName}">BUFF NAME</h2>
-                            <h3 th:text="${buffWrapper.buffDescription}">Buff description</h3>
-                            <div class="img"></div>
+                            <h3 th:text="${buffWrapper.buffDescription}">>Buff description</h3>
+                            <div class="img"> <img th:src="@{/graphics/{image}(image=${buffWrapper.buff.icon})}" style="margin-top: 36px;"> </div>
                             <input name="buff"  type="hidden" th:value="${buffWrapper.buff}"/>
                             <button class="buy-button" style="margin-bottom: 25px;" type="submit" value="ACTIVATE">ACTIVATE</button>
                         </form>

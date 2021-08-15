@@ -27,9 +27,9 @@ body {
 }
 
 .image-wrap{
-    background: rgba(248, 248, 255, 0.3);
-    overflow: scroll; /* needs scroll for local version */
-    height: 100%;
+  background: rgba(248, 248, 255, 0.3);
+  overflow: scroll; /* needs scroll for local version */
+  height: 100%;
 }
 
 /* Style the header with a grey background and some padding */
@@ -385,100 +385,6 @@ thead {
   text-align: center;
 }
 
-/*
-.card:hover::before, .card:hover::after {
-  display: block;
-  content: '';
-  position: absolute;
-  width: 250px;
-  height: 430px;
-  background: #99ff99;
-  border-radius: 6px;
-  z-index: -3;
-  animation: 1s clockwise infinite;
+form {
+  display: grid;
 }
-
-.card:hover:after {
-  background: #3bb300;
-  animation: 2s counterclockwise infinite;
-  z-index: -3;
-}
-
-@keyframes clockwise {
-  0% {
-    top: -5px;
-    left: 0;
-  }
-  12% {
-    top: -2px;
-    left: 2px;
-  }
-  25% {
-    top: 0;
-    left: 5px;
-  }
-  37% {
-    top: 2px;
-    left: 2px;
-  }
-  50% {
-    top: 5px;
-    left: 0;
-  }
-  62% {
-    top: 2px;
-    left: -2px;
-  }
-  75% {
-    top: 0;
-    left: -5px;
-  }
-  87% {
-    top: -2px;
-    left: -2px;
-  }
-  100% {
-    top: -5px;
-    left: 0;
-  }
-}
-
-@keyframes counterclockwise {
-  0% {
-    top: -5px;
-    right: 0;
-  }
-  12% {
-    top: -2px;
-    right: 2px;
-  }
-  25% {
-    top: 0;
-    right: 5px;
-  }
-  37% {
-    top: 2px;
-    right: 2px;
-  }
-  50% {
-    top: 5px;
-    right: 0;
-  }
-  62% {
-    top: 2px;
-    right: -2px;
-  }
-  75% {
-    top: 0;
-    right: -5px;
-  }
-  87% {
-    top: -2px;
-    right: -2px;
-  }
-  100% {
-    top: -5px;
-    right: 0;
-  }
-}
-*/
