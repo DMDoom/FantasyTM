@@ -23,6 +23,7 @@ import org.slf4j.LoggerFactory;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 
 
 @Controller
@@ -94,7 +95,8 @@ public class ManageController {
 
         // Overwrite user's team
         Team team = teamRepo.findByUserId(user.getId());
-        team.setActiveBuff(buff.getBuff());
+        // The issue with having BuffType is that team will be assigned a Buff object with ONLY BuffType field, not name, description etc which will show up wrong
+        team.setActiveBuff(buff.getBuff()); // might throw errors, was buff.getBuff() with Team having activeBuff enum
         teamRepo.save(team);
 
         // Subtract buffs from wallet

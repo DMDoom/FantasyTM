@@ -6,6 +6,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.List;
+import java.util.Optional;
 
 @Data
 @Entity
@@ -26,8 +27,19 @@ public class Team {
     @Size(min = 5, message = "Team needs at least 5 players!")
     private List<Player> players;
 
+
     @Enumerated(EnumType.STRING)
     private BuffType activeBuff;
+
+    /*
+    Current database does not have TEAM_BUFFS, it needs to have it
+    To migrate BuffType to Buff, look at the process of ManageController setActiveBuff
+    There is a workaround though, since theoretically BuffType is the only required thing for this to work
+    Research project structure
+
+    @OneToOne
+    private Buff activeBuff;
+    */
 
     private Long cost;
 

@@ -1,6 +1,7 @@
 package com.beta.fantasytm.web;
 
 import com.beta.fantasytm.*;
+import com.beta.fantasytm.data.BuffRepository;
 import com.beta.fantasytm.data.PlayerRepository;
 import com.beta.fantasytm.data.TeamRepository;
 import com.beta.fantasytm.data.WalletRepository;
@@ -30,12 +31,14 @@ public class CreateTeamController {
     private final PlayerRepository playerRepo;
     private TeamRepository teamRepo;
     private WalletRepository walletRepo;
+    private BuffRepository buffRepo;
 
     @Autowired
-    public CreateTeamController(PlayerRepository playerRepo, TeamRepository teamRepo, WalletRepository walletRepo) {
+    public CreateTeamController(PlayerRepository playerRepo, TeamRepository teamRepo, WalletRepository walletRepo, BuffRepository buffRepo) {
         this.playerRepo = playerRepo;
         this.teamRepo = teamRepo;
         this.walletRepo = walletRepo;
+        this.buffRepo = buffRepo;
     }
 
     @GetMapping
@@ -65,7 +68,10 @@ public class CreateTeamController {
 
         // Saving the team to the database
         team.setUser(user);
+        // Testing for thymeleaf purposes
+        // Need to analyze this hieroglyph structure to see how Team can store Buff objects instead of BuffType enum field
         team.setActiveBuff(BuffType.NULL);
+        //team.setActiveBuff(BuffType.NULL);
         teamRepo.save(team);
 
         // Placeholder redirect
