@@ -70,12 +70,11 @@ public class CreateTeamController {
         team.setUser(user);
         // Testing for thymeleaf purposes
         // Need to analyze this hieroglyph structure to see how Team can store Buff objects instead of BuffType enum field
-        team.setActiveBuff(BuffType.NULL);
+        team.setActiveBuff(buffRepo.findById(1L).get());
         //team.setActiveBuff(BuffType.NULL);
         teamRepo.save(team);
 
-        // Placeholder redirect
-        return "redirect:/login";
+        return "redirect:/manage";
     }
 
     @ModelAttribute(name = "team")

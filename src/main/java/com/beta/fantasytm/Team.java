@@ -6,7 +6,6 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.List;
-import java.util.Optional;
 
 @Data
 @Entity
@@ -27,19 +26,8 @@ public class Team {
     @Size(min = 5, message = "Team needs at least 5 players!")
     private List<Player> players;
 
-
-    @Enumerated(EnumType.STRING)
-    private BuffType activeBuff;
-
-    /*
-    Current database does not have TEAM_BUFFS, it needs to have it
-    To migrate BuffType to Buff, look at the process of ManageController setActiveBuff
-    There is a workaround though, since theoretically BuffType is the only required thing for this to work
-    Research project structure
-
     @OneToOne
     private Buff activeBuff;
-    */
 
     private Long cost;
 
@@ -63,6 +51,14 @@ public class Team {
 
         this.cost = sum;
     }
+
+    public void setActiveBuff(Buff newActiveBuff) {
+        this.activeBuff = newActiveBuff;
+    }
+
+    /*
+    DISABLED FOR MIGRATION
+    also doesn't work
 
     // Determine and update total earned points of the team
     // MARKED FOR FIX
@@ -101,6 +97,7 @@ public class Team {
     // that reached playoffs by 1.5x
 
     // UNTESTED, TEST
+
     public void updatePoints(BuffType activeBuff) {
         double sum = 0;
         for (Player player : players) {
@@ -127,7 +124,7 @@ public class Team {
 
         this.points = sum;
     }
-
+    */
     // Maybe void updatePointsWithUnderdogs() ?
 
 }

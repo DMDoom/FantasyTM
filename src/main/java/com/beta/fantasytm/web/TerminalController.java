@@ -45,6 +45,8 @@ public class TerminalController {
         return "terminal";
     }
 
+    /*
+    DISABLED FOR MIGRATION
 
     // Right now only this is functional for recentStepPoints calculations that take into account active buffs
     @PostMapping(params = "action=updateBasedOnAll")
@@ -110,4 +112,5 @@ public class TerminalController {
 
         return "redirect:/login";
     }
+     */
 }

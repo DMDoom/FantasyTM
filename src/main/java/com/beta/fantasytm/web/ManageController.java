@@ -70,7 +70,6 @@ public class ManageController {
         // Buff to return
         model.addAttribute("buff", new Buff());
 
-        // Available user wallet buffs
         List<Buff> buffs = new ArrayList<>();
         buffs.addAll(userWallet.getBuffs());
         buffs.remove(0); // removing NULL buff
@@ -85,18 +84,10 @@ public class ManageController {
     // NEEDS TESTING
     @PostMapping
     public String updateBuffs(@AuthenticationPrincipal User user, @ModelAttribute("buff") Buff buff, Errors errors) {
-
-        // CONSISTENCY ISSUE:
-        // Team holds:
-        // BuffType activeBuff
-        // List<Buff> buffs
-        // Either make both Buff, or BuffType
-        // Reconsider if a wrapper class is even necessary
-
         // Overwrite user's team
         Team team = teamRepo.findByUserId(user.getId());
-        // The issue with having BuffType is that team will be assigned a Buff object with ONLY BuffType field, not name, description etc which will show up wrong
-        team.setActiveBuff(buff.getBuff()); // might throw errors, was buff.getBuff() with Team having activeBuff enum
+        Buff toAssign = buffRepo.findById(buff.getId()).get();
+        team.setActiveBuff(toAssign);
         teamRepo.save(team);
 
         // Subtract buffs from wallet

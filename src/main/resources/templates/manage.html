@@ -41,9 +41,9 @@
 
                 <div class="activeBuffGrid">
                     <div class="card">
-                        <h2>TRIPLE CAPTAIN</h2>
-                        <h3>Your captain will score 1.5x</h3>
-                        <div class="img"></div>
+                        <h2 th:text="${userTeam.activeBuff.buffName}">BUFF NAME</h2>
+                        <h3 th:text="${userTeam.activeBuff.buffDescription}">>Buff description</h3>
+                        <div class="img"> <img th:src="@{/graphics/{image}(image=${userTeam.activeBuff.buff.icon})}" style="margin-top: 36px;"> </div>
                         <button class="buy-button" style="margin-bottom: 25px;" disabled>ACTIVATED</button>
                     </div>
                 </div>
@@ -105,7 +105,11 @@
                             <h2 th:text="${buffWrapper.buffName}">BUFF NAME</h2>
                             <h3 th:text="${buffWrapper.buffDescription}">>Buff description</h3>
                             <div class="img"> <img th:src="@{/graphics/{image}(image=${buffWrapper.buff.icon})}" style="margin-top: 36px;"> </div>
-                            <input name="buff"  type="hidden" th:value="${buffWrapper.buff}"/>
+                            <!--<input name="buff" type="hidden" th:value="${buffWrapper}"/> YOU CAN'T DO IT LIKE THIS -->
+                            <input name="buffName" type="hidden" th:value="${buffWrapper.buffName}">
+                            <input name="buffDescription" type="hidden" th:value="${buffWrapper.buffDescription}">
+                            <input name="id" type="hidden" th:value="${buffWrapper.id}">
+                            <input name="buff" type="hidden" th:value="${buffWrapper.buff}">
                             <button class="buy-button" style="margin-bottom: 25px;" type="submit" value="ACTIVATE">ACTIVATE</button>
                         </form>
                     </div>
