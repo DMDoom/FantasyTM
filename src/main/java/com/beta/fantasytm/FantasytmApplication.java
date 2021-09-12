@@ -2,6 +2,7 @@ package com.beta.fantasytm;
 
 import com.beta.fantasytm.data.BuffRepository;
 import com.beta.fantasytm.data.PlayerRepository;
+import com.beta.fantasytm.data.TeamRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -16,7 +17,7 @@ public class FantasytmApplication {
 
 
 	@Bean
-	public CommandLineRunner dataLoader(PlayerRepository repo, BuffRepository buffRepo) {
+	public CommandLineRunner dataLoader(PlayerRepository repo, BuffRepository buffRepo, TeamRepository teamRepo) {
 		return new CommandLineRunner() {
 			@Override
 			public void run(String... args) throws Exception {

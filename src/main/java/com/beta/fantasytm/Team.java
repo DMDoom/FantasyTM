@@ -22,7 +22,7 @@ public class Team {
     @OneToOne
     private User user;
 
-    @OneToMany
+    @ManyToMany // was OneToMany
     @Size(min = 5, message = "Team needs at least 5 players!")
     private List<Player> players;
 
