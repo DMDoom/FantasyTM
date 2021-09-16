@@ -25,8 +25,11 @@ public class FantasytmApplication {
 				ISSUES
 
 				TODO:
-				- add chips
-				- FINISH THE ADMIN HUB TO TAKE INTO ACCOUNT BUFFS, ALSO TEST IT
+				- Style login and register page to fit with the theme
+				= Add rules page, or maybe add a section below homepage with rules and rewards
+				- Make terminal functional
+				- Make activate buff button on manage page ask for confirmation with a popup modal window
+				- Add error handling for every page and bug test extensively, write tests
 
 				TRANSFERS;
 				- make all players have int popularity, it will:
@@ -34,16 +37,7 @@ public class FantasytmApplication {
 				 	* decrease by one for each sell
 				- transfers can be made in the team hubs
 				- only one transfer can be made per week
-
-				PLANNED FOR LATER
-				CHIPS;
-				- any team can have a chip active
-				- chip will provide various bonuses
-				- chips available
-					* BOOST PLAYER (give 2x points to a player for this week, does not stack)
-					* CAPTAIN BUFF (3x points instead of 2x)
-				- tie chips to Wallets
-				*/
+				 */
 
 				// Buff save
 				buffRepo.save(new Buff(1L, BuffType.NULL, "NONE ACTIVE", "No buff is active"));

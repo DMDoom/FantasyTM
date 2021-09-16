@@ -2,21 +2,33 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Car Cloud</title>
+    <link rel="stylesheet" th:href="@{/loginStyle.css}" />
+    <title> Fantasy TM register </title>
 </head>
-<body>
-<h1>Register</h1>
-<form method="POST" th:action="@{/register}" id="registerForm">
-    <label for="username">Username: </label>
-    <input type="text" name="username"/><br/>
 
-    <label for="password">Password: </label>
-    <input type="password" name="password"/><br/>
+<body th:style="'background-image: url(' + @{/background.jpg} + ');'">
 
-    <label for="confirm">Confirm password: </label>
-    <input type="password" name="confirm"/><br/>
+<div class="image-wrap">
+    <div class="login-page">
+        <div class="form">
 
-    <input type="submit" value="Register"/>
-</form>
+            <div class="login">
+                <div class="login-header">
+                    <h3>REGISTER</h3>
+                    <p>Please enter your credentials to create an account.</p>
+                </div>
+            </div>
+
+            <form class="login-form" method="POST" th:action="@{/register}" id="registerForm">
+                <input type="text" name="username" placeholder="username"/><br/>
+                <input type="password" name="password" placeholder="password"/><br/>
+                <input type="password" name="confirm" placeholder="confirm password"/><br/>
+                <button type="submit" value="Register">REGISTER</button>
+            </form>
+
+        </div>
+    </div>
+</div>
+
 </body>
 </html>

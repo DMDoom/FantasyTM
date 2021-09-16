@@ -20,7 +20,7 @@
 
 body {
   background-color: #80FF80;
-  background-image: url(https://www.gamegrin.com/assets/game/trackmania-2020/screenshots/_resampled/SetWidth1920-trackmania-2020-screenshots-2.jpg);
+  /* background-image: url(https://www.gamegrin.com/assets/game/trackmania-2020/screenshots/_resampled/SetWidth1920-trackmania-2020-screenshots-2.jpg); */
   background-repeat: no-repeat;
   background-attachment: fixed;
   margin:0;
@@ -35,7 +35,7 @@ body {
 /* Style the header with a grey background and some padding */
 .header {
   overflow: hidden;
-  background-color: var(--siteBackground);
+  background-color: #fafafa;
   padding: 20px 100px;
   box-shadow: 2px 2px 2px #b3b3b3;
 }

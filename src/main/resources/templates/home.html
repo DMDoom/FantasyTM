@@ -6,36 +6,30 @@
     <link href='https://fonts.googleapis.com/css?family=Rubik' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" th:href="@{/homeStyles.css}" />
 </head>
+
 <body>
-
-<div class="header">
-
-    <a th:href="@{/}" class="logo">FANTASY TM</a>
-
-    <div class="header-right">
-        <a th:href="@{/rankings}">Rankings</a>
-        <a th:href="@{/register}">Register</a>
-        <a th:href="@{/login}">Login</a>
-        <button class="button" th:onclick="window.location.href = '/create'">CREATE YOUR TEAM</button>
+    <div class="header">
+        <a th:href="@{/}" class="logo">FANTASY TM</a>
+        <div class="header-right">
+            <a th:href="@{/rankings}">Rankings</a>
+            <a th:href="@{/register}">Register</a>
+            <a th:href="@{/login}">Login</a>
+            <button class="button" th:onclick="window.location.href = '/create'">CREATE YOUR TEAM</button>
+        </div>
     </div>
 
-</div>
+    <div class="image-wrap">
+    </div>
 
-
-<div class="bg-video-wrap">
     <video autoplay muted loop id="myVideo">
         <source type="video/mp4" th:src="@{/backgroundVideo.mp4}">
     </video>
-    <div class="overlay">
-    </div>
-    <h1>Welcome to FantasyTM</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-        et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-        aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-        culpa qui officia deserunt mollit anim id est laborum.</p>
-    <button class="button2" th:onclick="window.location.href = '/create'">CREATE YOUR TEAM</button>
-</div>
 
+    <div class="overlay">
+        <h1>Welcome to</h1>
+        <h1>Fantasy TM</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ultrices placerat metus, ut malesuada elit congue vitae. Nam aliquam mollis erat, ut auctor felis. Etiam sed velit ultricies, interdum mi quis, sodales leo. Praesent finibus a risus at lobortis. Vivamus vehicula cursus mattis. Aenean nec tincidunt diam. Aenean vel neque rutrum, consequat nisl vel, aliquet turpis. Vivamus eu tellus vel mi interdum tempor. Quisque hendrerit risus magna, vitae porta felis molestie eget. Morbi faucibus enim sit amet arcu dignissim interdum. Phasellus varius vestibulum quam in suscipit. Vivamus blandit tellus eget leo lobortis scelerisque sit amet a lorem. Quisque fringilla nibh orci, id eleifend dolor bibendum eget.</p>
+        <button th:onclick="window.location.href = '/create'">CREATE YOUR TEAM</button>
+    </div>
 </body>
 </html>

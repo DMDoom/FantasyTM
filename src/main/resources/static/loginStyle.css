@@ -1,24 +1,51 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto:300);
-html {
-    min-height:100%;
+:root {
+  --siteBackground: #f4f0ec;
+  --siteGreen: #30b530; /* N: #2a9d2a */ /*#30b530*/
+  --tablesHead: #30b530;
+
+  --playerGradientStart: #f0f4ec; /*N: #f2f5f2*/
+  --playerGradientEnd: #d9e0d9; /*N: #d9e0d9*/
+
+  --buffGradientStart: #f0f4ec;
+  --buffGradientEnd: #d9e0d9;
+
+  --buttonBackground: #30b530;
+  --buttonHover: #faf0e6;
+  --buttonDisabled: #808080;
+
+  --mainText: #006600; /*#006600*/
+  --subText: #1B1B1B;
+  --sectionText: #003300;
 }
+
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
 header .header{
   background-color: #fff;
   height: 45px;
 }
-header a img{
-  width: 134px;
-margin-top: 4px;
+
+.image-wrap{
+    background: rgba(248, 248, 255, 0.3);
+    overflow: scroll; /* needs scroll for local version */
+    height: 100%;
 }
+
+header a img{
+    width: 134px;
+    margin-top: 4px;
+}
+
 .login-page {
   width: 360px;
   padding: 8% 0 0;
   margin: auto;
 }
+
 .login-page .form .login{
   margin-top: -31px;
 margin-bottom: 26px;
 }
+
 .form {
   position: relative;
   z-index: 1;
@@ -29,10 +56,12 @@ margin-bottom: 26px;
   text-align: center;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
+
 .form input {
-  font-family: "Roboto", sans-serif;
+  font-family: 'Rubik';
+  font-size: 18px;
   outline: 0;
-  background: #f2f2f2;
+  background: var(--siteBackground);
   width: 100%;
   border: 0;
   margin: 0 0 15px;
@@ -41,27 +70,12 @@ margin-bottom: 26px;
   font-size: 14px;
 }
 
-.form button {
-  font-family: "Roboto", sans-serif;
-  text-transform: uppercase;
-  outline: 0;
-  background-color: #328f8a;
-  background-image: linear-gradient(45deg,#328f8a,#08ac4b);
-  width: 100%;
-  border: 0;
-  padding: 15px;
-  color: #FFFFFF;
-  font-size: 14px;
-  -webkit-transition: all 0.3 ease;
-  transition: all 0.3 ease;
-  cursor: pointer;
-}
-
 .form .message {
   margin: 15px 0 0;
   color: #b3b3b3;
   font-size: 12px;
 }
+
 .form .message a {
   color: #4CAF50;
   text-decoration: none;
@@ -76,9 +90,70 @@ margin-bottom: 26px;
 
 body {
   background-color: #328f8a;
-  background-image: linear-gradient(45deg,#328f8a,#08ac4b);
-  font-family: "Roboto", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  height:100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  margin:0;
+}
+
+.form button {
+  position: relative;
+  margin-left: 20px;
+  background-color: var(--buttonBackground);
+  border: none;
+  font-size: 18px;
+  font-weight: bold;
+  font-family: 'Rubik';
+  color: #FFFFFF;
+  letter-spacing: 1px;
+  padding: 20px;
+  width: 350x;
+  text-align: center;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  text-decoration: none;
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: 6px;
+  min-width: 200px;
+}
+
+.form button:after {
+  content: "";
+  background: #90EE90;
+  display: block;
+  position: absolute;
+  padding-top: 300%;
+  padding-left: 350%;
+  margin-left: -20px!important;
+  margin-top: -120%;
+  opacity: 0;
+  transition: all 0.4s;
+}
+
+.form button:active:after {
+  padding: 0;
+  margin: 0;
+  opacity: 1;
+  transition: 0s;
+}
+
+.form button:hover {
+  background-color: var(--buttonHover); /* Green */
+  color: var(--mainText);
+  box-shadow: 0 0 0 1px black;
+}
+
+.form button:disabled {
+  background-color: var(--buttonDisabled);
+  color:#fff;
+}
+
+.form h3 {
+  font-family: 'Rubik';
+  font-size: 20px;
+}
+
+.form p {
+  font-family: 'Rubik';
+  font-size: 15px;
 }
