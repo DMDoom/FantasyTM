@@ -149,7 +149,7 @@ video {
   min-width: 100%;
   min-height: 100%;
   z-index: -1;
-  background: rgba(248, 248, 255, 0.3);
+  background: rgba(248, 248, 255, 0.6);
   overflow: hidden; /* needs scroll for local version */
   position: fixed;
 }

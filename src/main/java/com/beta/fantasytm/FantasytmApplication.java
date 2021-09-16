@@ -25,11 +25,10 @@ public class FantasytmApplication {
 				ISSUES
 
 				TODO:
-				- Style login and register page to fit with the theme
-				= Add rules page, or maybe add a section below homepage with rules and rewards
 				- Make terminal functional
-				- Make activate buff button on manage page ask for confirmation with a popup modal window
 				- Add error handling for every page and bug test extensively, write tests
+				- Add rules page, or maybe add a section below homepage with rules and rewards
+				- Make activate buff button on manage page ask for confirmation with a popup modal window
 
 				TRANSFERS;
 				- make all players have int popularity, it will:
