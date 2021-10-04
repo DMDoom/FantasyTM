@@ -56,65 +56,24 @@ public class Team {
         this.activeBuff = newActiveBuff;
     }
 
-    /*
-    DISABLED FOR MIGRATION
-    also doesn't work
-
-    // Determine and update total earned points of the team
-    // MARKED FOR FIX
-    // Somehow adjust for active buffs
-    // Maybe pass buff type
     public void updatePoints() {
         double sum = 0;
-        double helper = 0;
+
         for (Player player : players) {
-            // Times modifier
-            // wacky implementation, fix later
-            if (player.getPosition() == Position.CAPTAIN) {
-                helper = player.getPoints() * Position.CAPTAIN.getModifier();
-                sum += helper;
-                helper = 0;
-            // this is dumb
-            } else if (player.getPosition() == Position.UNDERDOG) {
-                helper = player.getPoints() * Position.UNDERDOG.getModifier();
-                sum += helper;
-                helper = 0;
-            } else if (player.getPosition() == Position.REGULAR) {
-                sum += player.getPoints();
-            }
-        }
-
-        this.points = sum;
-    }
-
-    // Issues with this:
-
-    // Total player points get taken into account rather than previous step points
-    // Player needs to have a field for recent points, and that's what should be taken into account
-    // Take recent points, perform the below calculations, and then add to totalPoints of the player
-
-    // ALSO, at the end of the season, in the terminal, there needs to be an option to update points of all underdogs
-    // that reached playoffs by 1.5x
-
-    // UNTESTED, TEST
-
-    public void updatePoints(BuffType activeBuff) {
-        double sum = 0;
-        for (Player player : players) {
-            if (player.getPosition() == Position.CAPTAIN) {
-                if (activeBuff == BuffType.TRIPLE_CAPTAIN) {
-                    sum += player.getRecentStepPoints() * BuffType.TRIPLE_CAPTAIN.getModifier();
-                } else {
-                    sum += player.getRecentStepPoints() * Position.CAPTAIN.getModifier();
-                }
-            } else if (player.getPosition() == Position.REGULAR) {
-                if (activeBuff == BuffType.FIRE_WEEK) {
+            if (player.getPosition() == Position.REGULAR) {
+                if (this.activeBuff.getBuff() == BuffType.FIRE_WEEK) {
                     sum += player.getRecentStepPoints() * BuffType.FIRE_WEEK.getModifier();
                 } else {
                     sum += player.getRecentStepPoints() * Position.REGULAR.getModifier();
                 }
+            } else if (player.getPosition() == Position.CAPTAIN) {
+                if (this.activeBuff.getBuff() == BuffType.TRIPLE_CAPTAIN) {
+                    sum += player.getRecentStepPoints() * BuffType.TRIPLE_CAPTAIN.getModifier();
+                } else {
+                    sum += player.getRecentStepPoints() * Position.CAPTAIN.getModifier();
+                }
             } else if (player.getPosition() == Position.UNDERDOG) {
-                if (activeBuff == BuffType.QUAD_UNDERDOG) {
+                if (this.activeBuff.getBuff() == BuffType.QUAD_UNDERDOG) {
                     sum += player.getRecentStepPoints() * BuffType.QUAD_UNDERDOG.getModifier();
                 } else {
                     sum += player.getRecentStepPoints() * Position.UNDERDOG.getModifier();
@@ -122,9 +81,8 @@ public class Team {
             }
         }
 
-        this.points = sum;
+        this.points += sum;
     }
-    */
-    // Maybe void updatePointsWithUnderdogs() ?
 
+    // Maybe void updatePointsWithUnderdogs() ?
 }

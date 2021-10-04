@@ -68,8 +68,6 @@ public class CreateTeamController {
 
         // Saving the team to the database
         team.setUser(user);
-        // Testing for thymeleaf purposes
-        // Need to analyze this hieroglyph structure to see how Team can store Buff objects instead of BuffType enum field
         team.setActiveBuff(buffRepo.findById(1L).get());
         //team.setActiveBuff(BuffType.NULL);
         teamRepo.save(team);

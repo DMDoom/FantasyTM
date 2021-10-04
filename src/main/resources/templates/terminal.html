@@ -10,23 +10,25 @@
         <table style="width:10%" cellspacing="0">
             <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>Points</th>
                     <th>Id</th>
+                    <th>Name</th>
                     <th>Org</th>
                     <th>Cost</th>
                     <th>Age</th>
+                    <th>Points</th>
+                    <th>Recent step points</th>
                     <th>Position</th>
                 </tr>
             </thead>
             <tbody>
                 <tr th:each="player, itemStat : ${form.players}">
-                    <td><input th:field="*{players[__${itemStat.index}__].name}"/></td>
-                    <td><input th:field="*{players[__${itemStat.index}__].points}"/></td>
                     <td><input th:field="*{players[__${itemStat.index}__].id}"/></td>
+                    <td><input th:field="*{players[__${itemStat.index}__].name}"/></td>
                     <td><input th:field="*{players[__${itemStat.index}__].org}"/></td>
                     <td><input th:field="*{players[__${itemStat.index}__].cost}"/></td>
                     <td><input th:field="*{players[__${itemStat.index}__].age}"/></td>
+                    <td><input th:field="*{players[__${itemStat.index}__].points}"/></td>
+                    <td><input th:field="*{players[__${itemStat.index}__].recentStepPoints}"></td>
                     <td><input th:field="*{players[__${itemStat.index}__].position}" th:value="${player.getPosition()}" /></td>
                 </tr>
             </tbody>

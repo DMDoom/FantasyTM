@@ -27,10 +27,6 @@ public class Player implements Persistable<Long> {
     private int cost;
     private int age;
 
-    // Change points -> totalPoints
-    // Add recentPoints
-    // Make adding up to total points automatic
-
     @NonNull
     private double points;
 
@@ -44,9 +40,7 @@ public class Player implements Persistable<Long> {
         return false;
     }
 
-    // Used to calculate total sum of points based on recent step points entry
-    // Is called when updating from terminal
-    // Untested
+    // Update total points
     public void sumUpPoints() {
         this.points += recentStepPoints;
     }

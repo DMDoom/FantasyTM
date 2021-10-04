@@ -3,6 +3,7 @@ package com.beta.fantasytm.web;
 import com.beta.fantasytm.Player;
 import com.beta.fantasytm.Position;
 import com.beta.fantasytm.Team;
+import com.beta.fantasytm.data.BuffRepository;
 import com.beta.fantasytm.data.PlayerRepository;
 import com.beta.fantasytm.data.TeamRepository;
 import com.beta.fantasytm.web.forms.UpdateTeamsForm;
@@ -26,11 +27,13 @@ public class TerminalController {
 
     TeamRepository teamRepo;
     PlayerRepository playerRepo;
+    BuffRepository buffRepo;
 
     @Autowired
-    public TerminalController(TeamRepository teamRepo, PlayerRepository playerRepo) {
+    public TerminalController(TeamRepository teamRepo, PlayerRepository playerRepo, BuffRepository buffRepo) {
         this.teamRepo = teamRepo;
         this.playerRepo = playerRepo;
+        this.buffRepo = buffRepo;
     }
 
     @GetMapping
@@ -45,31 +48,26 @@ public class TerminalController {
         return "terminal";
     }
 
-    /*
-    DISABLED FOR MIGRATION
-
     // Right now only this is functional for recentStepPoints calculations that take into account active buffs
     @PostMapping(params = "action=updateBasedOnAll")
     public String processUpdates(@ModelAttribute("form") UpdateTeamsForm form) {
+
         // Update players
         for (Player player : form.getPlayers()) {
-            // TEST
-            // Do the same for others
-            // This way only recent step points need to be entered and the total points will be automatically calculated
-            // ENSURE recent points are set to 0 if updating only total points
             player.sumUpPoints();
             playerRepo.save(player);
         }
 
-        // Update all teams based on updated players score
         for (Team team : teamRepo.findAll()) {
-            team.updatePoints(team.getActiveBuff());
+            team.updatePoints();
+            team.setActiveBuff(buffRepo.findById(1L).get());
             teamRepo.save(team);
         }
 
-        return "redirect:/login";
+        return "redirect:/manage";
     }
 
+    /*
     // TODO:
     // TEST
     // ALSO ADJUST FOR ACTIVE BUFFS
@@ -112,5 +110,6 @@ public class TerminalController {
 
         return "redirect:/login";
     }
-     */
+    */
+
 }
