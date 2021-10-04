@@ -80,7 +80,7 @@ public class ManageController {
         // Ranking test
         // possibly teamsRanked.subList() with userTeamRank -5, +5
         List<Team> teamsRanked = new ArrayList<>();
-        teamsRanked.addAll(teamRepo.findByOrderByPointsAsc());
+        teamsRanked.addAll(teamRepo.findByOrderByPointsDesc());
         model.addAttribute("teamsRanked", teamsRanked);
 
         // User team rank

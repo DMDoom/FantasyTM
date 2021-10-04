@@ -8,6 +8,6 @@ import java.util.List;
 public interface TeamRepository extends CrudRepository<Team, Long> {
 
     Team findByUserId(Long id); // testing
-    List<Team> findByOrderByPointsAsc();
+    List<Team> findByOrderByPointsDesc();
 
 }
