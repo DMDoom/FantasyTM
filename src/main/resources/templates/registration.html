@@ -16,13 +16,15 @@
                 <div class="login-header">
                     <h3>REGISTER</h3>
                     <p>Please enter your credentials to create an account.</p>
+                    <p th:if="${#fields.hasErrors('${form.username}')}" th:errors="*{form.username}" style="color: red;">Credentials error</p>
+                    <p th:if="${#fields.hasErrors('${form.password}')}" th:errors="*{form.password}" style="color: red;">Credentials error</p>
                 </div>
             </div>
 
             <form class="login-form" method="POST" th:action="@{/register}" id="registerForm">
                 <input type="text" name="username" placeholder="username"/><br/>
                 <input type="password" name="password" placeholder="password"/><br/>
-                <input type="password" name="confirm" placeholder="confirm password"/><br/>
+                <input type="password" name="confirmPassword" placeholder="confirm password"/><br/>
                 <button type="submit" value="Register">REGISTER</button>
             </form>
 

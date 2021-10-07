@@ -11,6 +11,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
@@ -28,10 +29,10 @@ public class User implements UserDetails {
     private Long id;
 
     @Column(unique = true) // second layer protection, throws error on persistence (?)
-    @NotNull
+    @NotEmpty
     private final String username;
 
-    @NotNull
+    @NotEmpty
     private final String password;
 
     @Override
