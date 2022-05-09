@@ -43,9 +43,7 @@ public class CreateTeamController {
 
     @GetMapping
     public String showCreateTeamForm(Model model, @AuthenticationPrincipal User user) {
-        model.addAttribute("team", new Team()); // maybe unnecessary
-
-        // Passing available balance so it can be displayed on the page
+        // Available balance
         Wallet wallet = walletRepo.findByUserId(user.getId());
         long balance = wallet.getBalance();
         model.addAttribute("availableFunds", balance);
@@ -55,21 +53,19 @@ public class CreateTeamController {
 
     @PostMapping
     public String processCreation(@Valid @ModelAttribute("team") Team team, Errors errors, @AuthenticationPrincipal User user) {
-        // Checking for errors
         if (errors.hasErrors()) {
             log.info(String.valueOf(errors.getAllErrors()));
         }
 
-        // Calculating team value and subtracting from user's wallet
+        // Calculating team cost and subtracting from user's wallet
         Wallet wallet = walletRepo.findByUserId(user.getId());
         team.calculateCost();
         wallet.subtractBalance(team.getCost());
-        walletRepo.save(wallet); // overwriting wallet data
+        walletRepo.save(wallet);
 
         // Saving the team to the database
         team.setUser(user);
         team.setActiveBuff(buffRepo.findById(1L).get());
-        //team.setActiveBuff(BuffType.NULL);
         teamRepo.save(team);
 
         return "redirect:/manage";
@@ -86,7 +82,7 @@ public class CreateTeamController {
         List<Player> players = new ArrayList<>();
         playerRepo.findAll().forEach(p -> players.add(p));
 
-        // For each Position, add all players from that position to the model so that displayed data is ultimately fetched from database
+        // For each Position, add all players available for that position to the model
         Position[] positions = Position.values();
         for (Position pos : positions) {
             model.addAttribute(pos.toString().toLowerCase(), filterByPosition(players, pos));
@@ -100,5 +96,4 @@ public class CreateTeamController {
                 .collect(Collectors.toList());
         return toReturn;
     }
-
 }

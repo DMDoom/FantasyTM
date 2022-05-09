@@ -4,22 +4,16 @@ import lombok.*;
 import org.springframework.data.domain.Persistable;
 
 import javax.persistence.*;
-import java.util.List;
-
-// AcessLevel.PRIVATE -> PRIVATE
 
 @Data
 @Entity
 @NoArgsConstructor(access = AccessLevel.PUBLIC, force = true)
 @AllArgsConstructor
-//@RequiredArgsConstructor
 public class Player implements Persistable<Long> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    //@Basic(optional = false)
-    //@Column(name = "id", unique = true, nullable = false)
     private Long id;
 
     private String name;

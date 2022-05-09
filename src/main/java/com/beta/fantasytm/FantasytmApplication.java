@@ -7,6 +7,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Profile;
 
 @SpringBootApplication
 public class FantasytmApplication {
@@ -15,27 +16,25 @@ public class FantasytmApplication {
 		SpringApplication.run(FantasytmApplication.class, args);
 	}
 
-
 	@Bean
+	@Profile("dev")
 	public CommandLineRunner dataLoader(PlayerRepository repo, BuffRepository buffRepo, TeamRepository teamRepo) {
 		return new CommandLineRunner() {
 			@Override
 			public void run(String... args) throws Exception {
 				/*
-				ISSUES
-
 				TODO:
 				- Make terminal functional
 				- Add error handling for every page and bug test extensively, write tests
-				- Add rules page, or maybe add a section below homepage with rules and rewards
-				- Make activate buff button on manage page ask for confirmation with a popup modal window
+				- Add rules page and a section below homepage with rules and rewards
+				- Make activate buff button on manage page ask for confirmation with a popup
 
 				TRANSFERS;
 				- make all players have int popularity, it will:
 					* increase by one for each buy (not counting team creation)
 				 	* decrease by one for each sell
 				- transfers can be made in the team hubs
-				- only one transfer can be made per week
+				- only one transfer can be made per week during regular season, possible more before playoffs
 				 */
 
 				// Buff save
@@ -44,11 +43,11 @@ public class FantasytmApplication {
 				buffRepo.save(new Buff(3L, BuffType.TRIPLE_CAPTAIN, "TRIP CAPTAIN", "Your captain will score 1.5x"));
 				buffRepo.save(new Buff(4L, BuffType.QUAD_UNDERDOG, "QUAD UNDER", "Your underdog will score 4x"));
 
+				// Unfortunately this seems to be the most readable way of doing this, assuming a greater amount
+				// of control is required over individual player's values depending on their position
+				// If ultimately I decide on a flat rate % increase for all captains and underdogs, then this can just be done in a loop
 
-				// ABSOLUTELY FUCKING DISGUSTING
-				// But honestly, I don't see any better way of doing this if different roles need different points
-				// Only solution is maybe standard cost could be modified by the points modifier
-				// NOTE: Calling save() on something with identical ID will overwrite
+				// Eligible captains
 				repo.save(new Player(1L, "CarlJr", "SOLARY", 100, 20, 100, 0, Position.CAPTAIN));
 				repo.save(new Player(2L, "Pac", "MNM", 100, 20, 100, 0, Position.CAPTAIN));
 				repo.save(new Player(3L, "Aurel", "GAMINGPRIVE", 100, 20, 100,0, Position.CAPTAIN));
@@ -66,6 +65,7 @@ public class FantasytmApplication {
 				repo.save(new Player(15L, "evoN", "TEAM SECRET", 100, 20, 100,0, Position.CAPTAIN));
 				repo.save(new Player(16L, "link", "GRIZI ESPORT", 100, 20, 100,0, Position.CAPTAIN));
 
+				// Eligible regular players
 				repo.save(new Player(17L, "CarlJr", "SOLARY", 100, 20, 100,0, Position.REGULAR));
 				repo.save(new Player(18L, "Pac", "MNM", 100, 20, 100,0, Position.REGULAR));
 				repo.save(new Player(19L, "Aurel", "GAMINGPRIVE", 100, 20, 100,0, Position.REGULAR));
@@ -83,6 +83,7 @@ public class FantasytmApplication {
 				repo.save(new Player(31L, "evoN", "TEAM SECRET", 100, 20, 100,0, Position.REGULAR));
 				repo.save(new Player(32L, "link", "GRIZI ESPORT", 100, 20, 100,0, Position.REGULAR));
 
+				// Eligible underdogs
 				repo.save(new Player(33L, "Spam", "ALLIANCE", 100, 20, 100,0, Position.UNDERDOG));
 				repo.save(new Player(34L, "Massa", "BIG", 100, 20, 100,0, Position.UNDERDOG));
 				repo.save(new Player(35L, "Kappa", "MCLAREN SHADOW", 100,20, 100,0, Position.UNDERDOG));

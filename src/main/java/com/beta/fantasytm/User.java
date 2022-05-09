@@ -5,14 +5,12 @@ import lombok.AccessLevel;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
-import org.hibernate.annotations.GenericGenerator;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 
@@ -22,13 +20,13 @@ import java.util.Collection;
 @RequiredArgsConstructor
 public class User implements UserDetails {
 
-    private static final long serialVersionUID = 1L; // ??
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true) // second layer protection, throws error on persistence (?)
+    @Column(unique = true)
     @NotEmpty
     private final String username;
 
@@ -56,5 +54,4 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
-
 }

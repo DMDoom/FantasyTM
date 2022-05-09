@@ -20,7 +20,6 @@ public class RegistrationForm {
     @NotEmpty(message = "Password cannot be empty")
     private String confirmPassword;
 
-    // Converting registration form into a user with encrypted passwords
     public User toUser(PasswordEncoder passwordEncoder) {
         return new User(username, passwordEncoder.encode(password));
     }

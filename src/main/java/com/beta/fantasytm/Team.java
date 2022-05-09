@@ -22,7 +22,7 @@ public class Team {
     @OneToOne
     private User user;
 
-    @ManyToMany // was OneToMany
+    @ManyToMany
     @Size(min = 5, message = "Team needs at least 5 players!")
     private List<Player> players;
 
@@ -56,6 +56,7 @@ public class Team {
         this.activeBuff = newActiveBuff;
     }
 
+    // Update points of the team taking into account player positions
     public void updatePoints() {
         double sum = 0;
 
@@ -84,5 +85,7 @@ public class Team {
         this.points += sum;
     }
 
-    // Maybe void updatePointsWithUnderdogs() ?
+    // void updatePointsWithUnderdogs() method required
+    // would be conditionally fired at the end of the season and would update the teams with underdog scores
+    // underdog players who reached playoffs would have a global buff applied to all of their scored points
 }

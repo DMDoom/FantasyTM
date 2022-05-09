@@ -46,26 +46,21 @@ public class RegistrationController {
 
     @PostMapping
     public String processRegistration(@Valid @ModelAttribute("form") RegistrationForm form, Errors errors) {
-        // If already exists, does not allow to create a user
-        // If password not equal to confirm password, does not allow to create a user
-        // Temporary solution, improve later with custom Validation
+        // Temporary solution
         if (!userRepo.findAllByUsername(form.getUsername()).isEmpty() || !form.getConfirmPassword().equals(form.getPassword())) {
             return "redirect:/register";
         } else if (errors.hasErrors()) {
             return "registration";
         } else {
-
-            // Save user with encrypted password
+            // Save user
             userRepo.save(form.toUser(passwordEncoder));
-
-            // Was previously in the method arguments field for some reason
             Wallet wallet = new Wallet();
 
             // Set wallet ownership
             wallet.setUser(userRepo.findByUsername(form.getUsername()));
 
             // Set default wallet balance
-            wallet.setBalance(5000L); // will be 650
+            wallet.setBalance(650L);
 
             // Set default wallet buffs
             List<Buff> buffs = new ArrayList<>();

@@ -1,7 +1,6 @@
 package com.beta.fantasytm.web;
 
 import com.beta.fantasytm.Player;
-import com.beta.fantasytm.Position;
 import com.beta.fantasytm.Team;
 import com.beta.fantasytm.data.BuffRepository;
 import com.beta.fantasytm.data.PlayerRepository;
@@ -38,11 +37,9 @@ public class TerminalController {
 
     @GetMapping
     public String showTerminal(Model model) {
+        // Display all players
         UpdateTeamsForm updateForm = new UpdateTeamsForm();
-
-        // Add all existing players to the model
         updateForm.getPlayers().addAll((Collection<? extends Player>) playerRepo.findAll());
-
         model.addAttribute("form", updateForm);
 
         return "terminal";
@@ -66,50 +63,4 @@ public class TerminalController {
 
         return "redirect:/manage";
     }
-
-    /*
-    // TODO:
-    // TEST
-    // ALSO ADJUST FOR ACTIVE BUFFS
-    @PostMapping(params = "action=updateBasedOnCaptains")
-    public String processFirstSix(@ModelAttribute("form") UpdateTeamsForm form) {
-
-        // Updating captains
-        for (int i = 1; i <= 16; i++) {
-            playerRepo.save(form.getPlayers().get(i));
-        }
-
-        // Updating regulars based on captains
-        int counterForCaptains = 1;
-        for (int i = 17; i <= 32; i++) {
-            Player placeholder = form.getPlayers().get(counterForCaptains);
-            placeholder.setPosition(Position.REGULAR);
-            placeholder.setId((long) i);
-            playerRepo.save(placeholder);
-
-            counterForCaptains++;
-        }
-
-        counterForCaptains = 9; // adjusted for underdogs being lower in rankings, only look at bottom 8 captains
-
-        // Updating underdogs based on captains
-        for (int i = 33; i <= 40; i++) {
-            Player placeholder = form.getPlayers().get(counterForCaptains);
-            placeholder.setPosition(Position.UNDERDOG);
-            placeholder.setId((long) i);
-            playerRepo.save(placeholder);
-
-            counterForCaptains++;
-        }
-
-        // Update all teams based on updated players score
-        for (Team team : teamRepo.findAll()) {
-            team.updatePoints();
-            teamRepo.save(team);
-        }
-
-        return "redirect:/login";
-    }
-    */
-
 }

@@ -1,6 +1,5 @@
 package com.beta.fantasytm;
 
-import com.beta.fantasytm.BuffType;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,7 +14,6 @@ import java.util.Objects;
 @AllArgsConstructor
 public class Buff {
 
-    // Pre-persist it much like Player and automatically add 3 buffs to each wallet
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -27,8 +25,6 @@ public class Buff {
     String buffName;
 
     String buffDescription;
-
-    // Maybe needs image? not sure how
 
     public void setBuff(BuffType buff) {
         this.buff = buff;

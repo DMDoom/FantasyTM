@@ -8,7 +8,6 @@ import com.beta.fantasytm.data.WalletRepository;
 import com.beta.fantasytm.Buff;
 import com.beta.fantasytm.web.forms.ShowTeamsForm;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,7 +23,6 @@ import org.slf4j.LoggerFactory;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.Optional;
 
 
 @Controller
@@ -77,7 +75,7 @@ public class ManageController {
         buffs.remove(0); // removing NULL buff
         model.addAttribute("availableBuffs", buffs);
 
-        // Ranking test
+        // Ranking
         // possibly teamsRanked.subList() with userTeamRank -5, +5
         List<Team> teamsRanked = new ArrayList<>();
         teamsRanked.addAll(teamRepo.findByOrderByPointsDesc());
@@ -101,21 +99,22 @@ public class ManageController {
         return "manage";
     }
 
-    // NEEDS TESTING
     @PostMapping
     public String updateBuffs(@AuthenticationPrincipal User user, @ModelAttribute("buff") Buff buff, Errors errors) {
-        // Overwrite user's team
         Team team = teamRepo.findByUserId(user.getId());
         Buff toAssign = buffRepo.findById(buff.getId()).get();
-        team.setActiveBuff(toAssign);
-        teamRepo.save(team);
-
-        // Subtract buffs from wallet
         Wallet wallet = walletRepo.findByUserId(user.getId());
-        // Currently only removes if available, need to ensure user can only use buffs they actually have
-        wallet.getBuffs().remove(buff); // Evaluates equality only on BuffType, not ID
-        walletRepo.save(wallet);
 
-        return "redirect:/manage";
+        // Subtract buff from the wallet and apply as active to the team
+        if (wallet.getBuffs().contains(toAssign)) { // Evaluates equality only on BuffType, not ID
+            wallet.getBuffs().remove(buff);
+            team.setActiveBuff(toAssign);
+            teamRepo.save(team);
+            walletRepo.save(wallet);
+
+            return "redirect:/manage";
+        } else {
+            throw new RuntimeException("Wallet does not contain specified buff");
+        }
     }
 }
